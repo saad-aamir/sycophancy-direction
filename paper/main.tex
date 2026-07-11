@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xcolor}
+\usepackage[numbers]{natbib}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\pilot}[1]{\textcolor{orange}{#1\textsuperscript{(pilot)}}}
+
+\title{Is Sycophancy Causally Manipulable?\\
+\large Directional Ablation Validated Against a Conditioned Behavioral
+Evaluation, with Pushback-Type Decomposition and Cross-Lingual Transfer}
+\author{Saad Aamir\\ \small Independent / Dark Matter Studio\\
+\small \texttt{saad@saadaamir.com} \todo{confirm email}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Recent work disagrees about whether sycophancy in large language models is a
+causally manipulable linear direction: linear probes recover it reliably yet
+steer poorly, while persona-vector approaches suggest it is not a single
+direction at all. We adjudicate this question with a validation standard
+missing from prior work: directional ablation evaluated against a rigorous
+multi-turn behavioral harness that conditions on initially-correct answers
+and reports question-clustered confidence intervals. On \todo{models}, we
+extract difference-in-means directions contrasting capitulation with
+held-firm episodes, and find that ablating the best direction reduces
+destabilization from \todo{X\%} to \todo{Y\%} while leaving unchallenged
+accuracy unchanged (\todo{Z\%} vs \todo{Z'\%}). Decomposing by
+\emph{pushback type}, we find \todo{that per-type directions are
+similar/distinct (cosine \todo{...})}, offering a mechanistic account of
+previously observed cross-model differences in failure shape. Finally, we
+test cross-lingual transfer: ablating the English-derived direction
+\todo{does/does not} reduce destabilization on Urdu prompts, \todo{...}.
+Code and data: \url{https://github.com/saad-aamir/sycophancy-direction}.
+\end{abstract}
+
+\section{Introduction}
+Sycophancy---the tendency of RLHF-trained assistants to abandon correct
+answers under user pushback---is among the most persistent alignment failure
+modes \citep{perez2022discovering,sharma2023sycophancy}. Behavioral
+evaluations have characterized \emph{when} models capitulate; a growing
+mechanistic literature asks \emph{how}. That literature currently disagrees.
+Linear probes recover sycophancy from residual-stream activations, yet the
+probe directions steer behavior poorly \citep{genadi2026probes}. Steering
+vectors constructed by contrastive activation addition modulate sycophantic
+outputs \citep{rimsky2024caa,nrimsky2023modulating}, but recent work argues
+generic persona vectors match targeted sycophancy vectors, suggesting a
+persona-level property rather than a dedicated direction
+\citep{devils2026persona}. Decomposition studies find multiple separable
+sycophancy-related directions \citep{vennemeyer2025dissociating,
+dissociating2026}.
+
+We argue this disagreement persists partly because causal claims have been
+validated against weak behavioral measures: small hand-inspected generation
+sets, single pushback formats, or unconditioned agreement rates that
+conflate capitulation with ordinary error. We bring a stronger standard.
+Our prior behavioral harness \todo{cite your repo/blog writeup} measures
+\emph{destabilization}---the probability that an initially-correct answer
+is abandoned under pushback---across multiple pushback types, with an
+LLM-judge validated to binary reliability and question-clustered confidence
+intervals. Here we close the loop: extract candidate directions from the
+harness's own transcripts, ablate them, and rerun the harness.
+
+Contributions:
+\begin{enumerate}
+  \item \textbf{Causal adjudication with rigorous validation.} Difference-in-
+  means capitulation directions, evaluated by directional ablation against a
+  conditioned, clustered behavioral eval, with capability controls.
+  \item \textbf{Pushback-type decomposition.} Per-type directions
+  (\todo{simple, authoritative, emotional, social}) and their geometric
+  relations, connecting representation structure to previously observed
+  cross-model differences in failure shape.
+  \item \textbf{Cross-lingual transfer (English $\to$ Urdu).} To our
+  knowledge the first test of whether sycophancy directions transfer to a
+  low-resource language, with native-speaker QC of translations.
+\end{enumerate}
+
+\section{Related Work}
+\paragraph{Behavioral characterizations of sycophancy.}
+\citet{perez2022discovering} introduced model-written evaluations of
+sycophancy; \citet{sharma2023sycophancy} showed preference models reward
+sycophantic responses. \todo{1--2 sentences on your harness and its
+crossover finding.}
+
+\paragraph{Linear directions and activation steering.}
+Activation addition \citep{turner2023actadd} and contrastive activation
+addition \citep{rimsky2024caa} steer behaviors including sycophancy via
+mean-difference vectors; representation engineering \citep{zou2023repe} and
+inference-time intervention \citep{li2023iti} are closely related.
+\citet{arditi2024refusal} showed refusal is mediated by a single direction,
+validated by ablation---the methodological template we adapt.
+
+\paragraph{Mechanisms of sycophancy.}
+\citet{wang2025override} localize sycophancy with patching and argue correct
+answers are internally represented but overridden. \citet{genadi2026probes}
+find linear representation but weak steering. \citet{vennemeyer2025dissociating}
+and \citet{dissociating2026} decompose sycophancy into separable directions
+(agreement vs.\ praise). \citet{devils2026persona} argue persona vectors
+rival targeted steering. None validate ablation against a conditioned,
+clustered behavioral eval, decompose by pushback type, or test cross-lingual
+transfer. \todo{Re-verify each claim against the papers before submission.}
+
+\section{Method}
+\subsection{Behavioral evaluation}
+For each question $q$ with reference answer $a^\ast$, the model answers
+(turn 1); if judged correct, a pushback message of type
+$t \in \mathcal{T}$ is issued and the model answers again (turn 2). The
+\textbf{destabilization rate} for type $t$ is
+\begin{equation}
+D_t = \Pr\big[\text{turn-2 incorrect} \,\big|\, \text{turn-1 correct},\, t\big],
+\end{equation}
+estimated with question-clustered bootstrap confidence intervals.
+\todo{Judge details: binary taxonomy, validation stats from your harness.}
+
+\subsection{Direction extraction}
+Let $h_\ell(x) \in \mathbb{R}^{d}$ be the residual-stream activation at
+layer $\ell$, last prompt token, for conversation prefix $x$ (the prompt
+immediately preceding the turn-2 response). With capitulation set
+$\mathcal{C}$ and held-firm set $\mathcal{H}$ from baseline transcripts:
+\begin{equation}
+v_\ell = \tfrac{1}{|\mathcal{C}|}\!\sum_{x \in \mathcal{C}}\! h_\ell(x)
+       - \tfrac{1}{|\mathcal{H}|}\!\sum_{x \in \mathcal{H}}\! h_\ell(x),
+\qquad \hat{v}_\ell = v_\ell / \lVert v_\ell \rVert_2 .
+\end{equation}
+Layers are ranked by AUROC of the projection $h_\ell(x)^\top \hat{v}_\ell$
+as a $\mathcal{C}$-vs-$\mathcal{H}$ separator. Per-type directions
+$\hat{v}_\ell^{(t)}$ use only episodes of type $t$.
+
+\subsection{Causal interventions}
+\textbf{Directional ablation:} every residual-stream write is modified as
+$x \leftarrow x - (x^\top \hat{v})\hat{v}$ at all layers and positions,
+following \citet{arditi2024refusal}; the behavioral eval is then rerun.
+\textbf{Steering:} $x \leftarrow x + \alpha\hat{v}$ at the source layer on
+conversations with \emph{no} pushback, testing whether the direction
+suffices to induce capitulation.
+\textbf{Controls:} (i) ablating random unit directions; (ii) unchallenged
+(turn-1) accuracy; (iii) \todo{MMLU subset}; (iv) refusal behavior spot-check
+for specificity.
+
+\subsection{Cross-lingual transfer}
+The question set and pushback templates are translated to Urdu
+(\todo{translation method}; QC by a native speaker). We measure (a) Urdu
+destabilization rates, (b) cosine similarity between Urdu- and
+English-derived directions, and (c) Urdu destabilization under ablation of
+the \emph{English}-derived direction.
+
+\section{Experimental Setup}
+Models: \todo{Qwen2.5-1.5B-Instruct (pilot), Qwen2.5-7B-Instruct,
+Llama-3.1-8B-Instruct}. Questions: \todo{N factual questions from the
+harness}. Pushback types: \todo{list}. Decoding: greedy. \todo{Hardware.}
+
+\section{Results}
+\subsection{Sycophancy is linearly decodable from the pre-response state}
+\todo{AUROC-by-layer figure; peak layer and value.}
+\begin{figure}[h]\centering
+% \includegraphics[width=.7\linewidth]{../outputs/figures/capitulation_layer_auroc.png}
+\caption{AUROC of projection onto $\hat{v}_\ell$ by layer. \todo{pilot fig}}
+\end{figure}
+
+\subsection{Ablation reduces destabilization without harming accuracy}
+\begin{table}[h]\centering
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{Destabilization $\downarrow$} &
+   \multicolumn{2}{c}{Unchallenged acc.} \\
+Pushback type & baseline & ablated & baseline & ablated \\
+\midrule
+simple        & \pilot{--} & \pilot{--} & \pilot{--} & \pilot{--} \\
+authoritative & \pilot{--} & \pilot{--} & & \\
+emotional     & \pilot{--} & \pilot{--} & & \\
+social        & \pilot{--} & \pilot{--} & & \\
+random-dir control & \pilot{--} & \pilot{--} & & \\
+\bottomrule
+\end{tabular}
+\caption{Main result. 95\% question-clustered bootstrap CIs. \todo{fill}}
+\end{table}
+
+\subsection{Pushback-type geometry}
+\todo{Cosine-similarity matrix of per-type directions; relate to the
+behavioral crossover finding.}
+
+\subsection{Steering induces capitulation without pushback}
+\todo{Flip rate vs $\alpha$.}
+
+\subsection{Cross-lingual transfer}
+\todo{Urdu results.}
+
+\section{Discussion}
+\todo{Reconcile with genadi2026 (probes vs diff-in-means), devils2026
+(persona framing). What would each account predict for your per-type and
+transfer results?}
+
+\section{Limitations}
+Pilot conducted on a 1.5B model where the initially-correct set is small;
+heuristic judge used only for pilot numbers; \todo{single model family for
+the main claim until Llama replication lands; translation coverage;
+correlational gap between direction and concept.}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}
