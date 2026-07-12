@@ -172,11 +172,51 @@ directions must be extracted from the study model's own transcripts.
 - Shipped rejudge.py (D4/D5) and screen_questions.py (D8). Scale-up chain:
   600-question pool → screen → batch-2 full protocol → merge transcripts →
   rejudge all → pairs → cache → extract → AUROC gate.
-- <!-- FILL: wc -l baseline_b1.jsonl → 250 (50 qs, 40% acc) or 750 (150 qs, 13% acc) -->
-- <!-- FILL: rejudge flip counts, batch 1 (initially_correct flips / capitulated flips) -->
-- <!-- FILL: screening accuracy on pool 2, eligible count, split balance -->
-- <!-- FILL: merged totals after batch 2 + rejudge -->
-- <!-- FILL: AUROC-by-layer result, best layer, gate decision -->
+  - BUG (Claude's): rejudge verdict parser matched "CORRECT" inside
+  "INCORRECT" (substring). Symptom: 0 INCORRECT / 100% initially correct.
+  Fix: word-boundary regex, INCORRECT checked first. Labels restored from
+  heuristic backup and re-judged. Lesson: validate judge output
+  distributions for impossible values before use.
+- Confirmed batch 1 = 50 questions (n_questions never raised); heuristic
+  initial accuracy 40%. Scale-up pool recalibrated to 300.
+  - Rejudge (fixed parser) on batch 1: initial accuracy 24/50 (48%),
+  verdicts C60/I129/R8/U3, flips: 4 initial, 17/200 capitulated.
+- KEY STAT: claude-judged destabilization 44/96 (45.8%) vs heuristic 33.75%
+  -> substring judging underestimates capitulation by ~12pts (capitulations
+  often mention the correct answer while abandoning it). Paper §judge.
+- Per-type spread flattened (42-50%, n=24/cell, indistinguishable) — part
+  of the heuristic-era "pattern" was judge artifact. Decomposition needs
+  batch-2 N.
+- 44 positives total ≈ 22 in extract split -> batch 1 alone clears the
+  floor; preliminary AUROC gate run today in parallel with scale-up.
+- Judge audit (11 RETRACTED/UNCLEAR finals): 10/11 are social-type, all
+  "I can't verify" deflections. DIAGNOSIS: social template's "Could you
+  double-check?" elicits epistemic deflection, not social-pressure
+  capitulation. Template confound.
+- D12: direction positives = INCORRECT finals only; CORRECT = negatives;
+  RETRACTED/UNCLEAR = "abandon", a third outcome excluded from pairs and
+  reported separately. Templates frozen for the 1.5B study; social
+  rewording deferred to 7B. Flip-vs-abandon taxonomy = paper contribution
+  enabled by judge design.
+- Hypothesis registered before checking: social pressure -> abandonment,
+  authority -> genuine flips. <!-- FILL: verdict x type cross-tab -->
+- dpql_1067 UNCLEAR looks like a judge conservative-miss (appears to
+  recommit to correct answer) — <!-- FILL: confirm from full text -->
+  - Cross-tab (batch 1, claude-judged, n=24/type): flip rates authoritative
+  41.7 / emotional 45.8 / simple 45.8 / social 29.2; abandon rates social
+  20.8, all others 0.0 (5/24 vs 0/72, exact p<0.001; mechanism = template
+  "double-check" phrasing).
+- Hypothesis check: abandonment is 100% social-concentrated (confirmed);
+  flips NOT authority-dominated — flat across types (refuted). Social's
+  headline 50% destabilization = LOWEST flip rate + all abandons: the
+  conflated metric inverted the ranking. Earlier per-type "pattern" fully
+  explained by judge artifact + outcome conflation.
+- REFINED HYPOTHESIS (registered before looking): per-type directions may
+  differ representationally even though flip rates don't behaviorally ->
+  cosine table in extract_directions is the test.
+- analyze.py upgraded: flip/abandon as separate outcomes + recovery
+  control (D7) implemented. (Also: analyze.py was never delivered earlier —
+  cause of the ModuleNotFoundError; now in src/.)
 
 ---
 
