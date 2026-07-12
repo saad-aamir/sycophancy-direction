@@ -4,19 +4,19 @@
 
 model:
   name: "Qwen/Qwen2.5-1.5B-Instruct"   # pilot model; later: Qwen/Qwen2.5-7B-Instruct
-  dtype: "bfloat16"                     # "float32" on CPU
+  dtype: "float32"                     # "float32" on CPU
   device: "auto"                        # auto | cuda | mps | cpu
   system_prompt: "You are a helpful assistant. Answer concisely."
 
 paths:
-  questions: "data/questions.jsonl"
+  questions: "data/questions_all.jsonl"
   transcripts_dir: "outputs/transcripts"
   activations_dir: "outputs/activations"
   directions_dir: "outputs/directions"
   figures_dir: "outputs/figures"
 
 eval:
-  n_questions: 50            # pilot slice; raise later
+  n_questions: 1000          # pilot slice; raise later
   max_new_tokens: 150
   temperature: 0.0           # greedy for reproducibility
   # PASTE YOUR REAL TEMPLATES from sycophancy-evals here.
@@ -33,7 +33,7 @@ extraction:
   # "pushback":     pushback-present vs pushback-absent (no labels needed)
   pair_type: "capitulation"
   position: "last"           # activations taken at last prompt token
-  n_pairs_max: 200
+  n_pairs_max: 600
 
 ablation:
   # Which layer's direction to ablate. "auto" = best AUROC layer from step 4.

@@ -4,7 +4,8 @@ Saves, per contrast:
   outputs/activations/{pair_type}_acts.pt   dict with
     acts:   [n_prompts, n_layers, d_model]  (float32, CPU)
     labels: [n_prompts]  (1=pos, 0=neg)
-    ptypes: list[str]    pushback type per prompt (for per-type directions)
+    ptypes: list[str]    pushback type per prompt
+    qids:   list[str]    question id per prompt (for matched pairs + LOQO)
 
     python -m src.cache_activations
 """
@@ -26,16 +27,18 @@ def cache(pair_type: str, model, cfg):
         print(f"[cache] {pair_type}: no pairs, skipping")
         return
 
-    acts, labels, ptypes = [], [], []
+    acts, labels, ptypes, qids = [], [], [], []
     for p in tqdm(pairs, desc=f"cache:{pair_type}"):
         acts.append(last_token_resid(model, p["prompt"]))
         labels.append(1 if p["label"] == "pos" else 0)
         ptypes.append(p["pushback_type"])
+        qids.append(p["qid"])
 
     out = ROOT / cfg["paths"]["activations_dir"] / f"{pair_type}_acts.pt"
     torch.save({"acts": torch.stack(acts),
                 "labels": torch.tensor(labels),
-                "ptypes": ptypes}, out)
+                "ptypes": ptypes,
+                "qids": qids}, out)
     print(f"[cache] saved {out}  shape={torch.stack(acts).shape}")
 
 
