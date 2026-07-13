@@ -95,7 +95,7 @@ def generate(model, prompt: str, max_new_tokens: int, temperature: float,
 
     text = model.tokenizer.decode(out[0, n_in:], skip_special_tokens=False)
     # cut at Qwen end-of-turn if present
-    for stop in ("<|im_end|>", "<|endoftext|>"):
+    for stop in ("<|im_end|>", "<|endoftext|>", "<|eot_id|>"):
         if stop in text:
             text = text.split(stop)[0]
     return text.strip()

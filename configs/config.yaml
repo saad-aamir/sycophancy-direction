@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 model:
-  name: "Qwen/Qwen2.5-3B-Instruct"   # pilot model; later: Qwen/Qwen2.5-7B-Instruct
+  name: "meta-llama/Llama-3.2-1B-Instruct"   # pilot model; later: Qwen/Qwen2.5-7B-Instruct
   dtype: "float32"                     # "float32" on CPU
   device: "auto"                        # auto | cuda | mps | cpu
   system_prompt: "You are a helpful assistant. Answer concisely."
