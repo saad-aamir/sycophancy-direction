@@ -6,17 +6,18 @@
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
 
 % ============================================================
-% v2 DRAFT. Two models complete. All numbers real. Remaining \todo{}
-% items are yours: bib verification, CI-table transcription, appendix
-% prose, figure includes, voice rewrite.
-% Note: rename the Llama outputs dir first:  mv outputs outputs_llama1b
+% CAMERA-READY except the voice pass. Real figures embedded, authors
+% set, all citations verified, zero \todo{} macros remain.
+% Remaining (human): voice rewrite (numbers frozen); git tag arxiv-v1.
 % ============================================================
 
 \title{No Usable Linear ``Capitulation Direction'' in Two Small LLMs:\\
 \large A Validation Protocol for Activation-Steering Claims, and a\\
 Cross-Family Behavioral Study of Sycophancy Under Pushback}
 \author{Saad Aamir\\ \small Independent researcher\\
-\small \texttt{\todo{email}}}
+\small \texttt{saadaamir473@gmail.com}
+\and Muhammad Awais Bin Adil\\ \small Independent researcher\\
+\small \texttt{binadilawais@gmail.com}}
 \date{\today}
 
 \begin{document}
@@ -41,9 +42,9 @@ episodes). Identical pushback repairs initially wrong answers only
 $\sim$13\% of the time in both models; pushback is net epistemically
 destructive. We then ask whether capitulation is linearly decodable from
 the pre-response residual stream, a prerequisite for steering-vector
-interventions. A naive difference-in-means probe appears to succeed
-(in-sample AUROC 0.81 / 0.71), but a validation protocol combining
-question-level cross-validation, shuffled-label nulls, and a
+interventions at that locus. A naive difference-in-means probe appears
+to succeed (in-sample AUROC 0.81 / 0.71), but a validation protocol
+combining question-level cross-validation, shuffled-label nulls, and a
 known-direction positive control shows the apparent signal is
 overfitting: the best cross-validated AUROC is 0.582 in Qwen (marginally
 above its permutation threshold of 0.574) and 0.548 in Llama (below its
@@ -65,11 +66,13 @@ mechanistic literature asks whether it is represented as a
 manipulated. That literature currently disagrees: contrastive activation
 addition modulates sycophantic outputs
 \citep{rimsky2024caa,nrimsky2023modulating}; linear probes recover
-sycophancy but the probe directions steer poorly \citep{genadi2026probes};
-recent work argues generic persona vectors rival targeted sycophancy
-vectors \citep{devils2026persona}; decomposition studies find multiple
-separable sycophancy-adjacent directions
-\citep{vennemeyer2025dissociating,dissociating2026}.
+sycophancy across components, yet residual-stream probe directions
+steer poorly, with effective intervention confined to a sparse set of
+attention heads \citep{genadi2026probes}; off-the-shelf persona vectors
+rival targeted steering while being largely geometrically independent
+of the sycophancy direction \citep{devils2026persona,chen2025persona};
+and decomposition studies find multiple separable sycophancy-adjacent
+directions \citep{vennemeyer2025dissociating,dissociating2026}.
 
 We contribute on two fronts. First, a \textbf{cross-family behavioral
 characterization} of capitulation under pushback whose design choices
@@ -117,10 +120,13 @@ Contributions:
 introduced model-written sycophancy evaluations;
 \citet{sharma2023sycophancy} showed preference models reward sycophantic
 responses and studied answer-swaying under ``are you sure?''-style
-challenges, which our simple-pushback condition follows. Our paired
-cross-style comparisons, cross-family crossover, and flip/abandon
-distinction extend this line. \todo{1--2 sentences positioning vs.\ any
-2025--26 behavioral work found in a final lit pass.}
+challenges, which our simple-pushback condition follows, and
+\citet{arvin2025checkmywork} measures the same phenomenon in an
+educational setting. \citet{ye2026taxonomy} argue from an expert survey
+that ``sycophancy'' names a fragmented construct spanning distinct
+behaviors; our flip/abandon dissociation and its 6$\times$ cross-family
+variation provide behavioral evidence for that fragmentation, and our
+paired cross-style comparisons add the crossover result.
 
 \paragraph{Activation steering and linear directions.} Activation
 addition \citep{turner2023actadd}, contrastive activation addition
@@ -130,23 +136,33 @@ mean-difference vectors. \citet{arditi2024refusal} validated a refusal
 direction causally via ablation; their methodology motivated ours, and
 our gate is the decodability prerequisite for such interventions.
 
-\paragraph{Mechanisms of sycophancy.} \citet{wang2025override} localize
-sycophancy with patching; \citet{genadi2026probes} find linear
-representation but weak steering; \citet{vennemeyer2025dissociating} and
-\citet{dissociating2026} decompose sycophancy-adjacent behaviors;
-\citet{devils2026persona} question direction specificity. None validate
-against a conditioned behavioral evaluation with clustered statistics,
-and none report the overfitting control we show is necessary at typical
-contrast-set sizes. \todo{Re-verify each claim against the papers before
-posting.}
+\paragraph{Mechanisms of sycophancy.} \citet{wang2026override} localize
+sycophancy with logit-lens and activation patching, arguing correct
+answers are internally represented but overridden.
+\citet{genadi2026probes} find sycophancy linearly separable in
+residual-stream, MLP, and attention activations, but report that
+steering succeeds only in a sparse subset of middle-layer attention
+heads, not from residual-stream probe directions.
+\citet{vennemeyer2025dissociating} decompose sycophancy into genuine
+agreement, sycophantic agreement, and sycophantic praise using
+difference-in-means directions; \citet{dissociating2026} dissociate
+factual from opinion sycophancy via probe and steering-vector transfer.
+\citet{devils2026persona} show doubt- and scrutiny-flavored persona
+vectors recover 68--98\% of targeted CAA's sycophancy reduction while
+preserving accuracy when the user is correct, with the persona
+direction largely geometrically independent of the sycophancy
+direction. To our knowledge, none of these validate against a
+conditioned behavioral evaluation with question-clustered statistics,
+and none report the overfitting control we show is necessary at
+typical contrast-set sizes.
 
 \section{Behavioral Evaluation}
 \subsection{Protocol}
-Questions are drawn from a shared 300-question TriviaQA (rc.nocontext)
-pool \todo{cite TriviaQA}. For each question the model answers (turn 1);
-a scripted pushback of type $t$ is appended and the model answers again
-(turn 2). The four templates, frozen verbatim throughout and identical
-across models:
+Questions are drawn from a shared 300-question pool sampled from
+TriviaQA (rc.nocontext) \citep{joshi2017triviaqa}. For each question
+the model answers (turn 1); a scripted pushback of type $t$ is appended
+and the model answers again (turn 2). The four templates, frozen
+verbatim throughout and identical across models:
 
 \begin{itemize}
 \item \textbf{simple}: ``I don't think that's right. Are you sure?''
@@ -202,11 +218,11 @@ The primary metric is the \textbf{flip rate}:
 $\Pr[\text{turn-2 commits to a wrong answer} \mid \text{turn-1
 correct}, t]$. Confidence intervals are question-clustered bootstrap
 (2{,}000 resamples). Pairwise comparisons between pushback types use
-exact binomial tests on within-question discordant pairs (McNemar),
-Bonferroni-corrected for six comparisons per model; the test was
-specified before any comparison was run, and the Llama key comparison
-(emotional vs.\ simple) was specified in advance of judged labels and
-testing. The \textbf{recovery rate},
+exact binomial tests on within-question discordant pairs
+\citep{mcnemar1947}, Bonferroni-corrected for six comparisons per
+model; the test was specified before any comparison was run, and the
+Llama key comparison (emotional vs.\ simple) was specified in advance
+of judged labels and testing. The \textbf{recovery rate},
 $\Pr[\text{turn-2 correct} \mid \text{turn-1 wrong}, t]$, is computed
 on the retained initially-wrong questions.
 
@@ -249,10 +265,10 @@ Llama & authoritative vs.\ simple & 23 vs.\ 22 & 1.0 & 1.0 & 1.0\\
 \bottomrule
 \end{tabular}
 \caption{Within-question paired comparisons of flip propensity (exact
-McNemar; significant and mirror-relevant rows shown, full 6-comparison
-matrices per model in Appendix~\todo{ref}). The emotional-vs-simple
-comparison is significant in \emph{opposite directions} across
-families.}
+McNemar; significant and mirror-relevant rows shown, full six-comparison
+matrices per model in Appendix~\ref{app:judge},
+Table~\ref{tab:mcnemarfull}). The emotional-vs-simple comparison is
+significant in \emph{opposite directions} across families.}
 \label{tab:mcnemar}
 \end{table}
 
@@ -276,14 +292,38 @@ directly symmetric; the net effect nonetheless favors degradation by
 roughly 3$\times$ in both families.
 
 \begin{table}[h]\centering
-\small
-\todo{Insert the per-split analyze.py tables for both models
-(flip/abandon/recovery with clustered 95\% CIs; all numbers in
-RESEARCH\_LOG). Qwen heldout ALL flip 44.6 [35.9, 53.3], recovery 13.9
-[2.5, 28.4]; Llama heldout ALL flip 41.2 [33.1, 49.1], recovery 11.8
-[2.9, 25.0]; plus extract splits.}
-\caption{Per-split rates with question-clustered bootstrap CIs, both
-models.}
+\footnotesize
+\begin{tabular}{lcc}
+\toprule
+\multicolumn{3}{c}{\textbf{Qwen2.5-1.5B}}\\
+ & heldout & extract\\
+\midrule
+flip, authoritative & 40.6 [29.2, 52.1] & 35.6 [25.8, 45.6]\\
+flip, emotional     & 42.0 [30.3, 53.4] & 34.4 [24.7, 44.4]\\
+flip, simple        & 47.8 [35.8, 59.4] & 51.1 [41.1, 61.5]\\
+flip, social        & 47.8 [35.7, 59.7] & 37.8 [27.8, 47.3]\\
+flip, ALL           & 44.6 [35.9, 53.3] ($n{=}276$) & 39.7 [32.6, 47.4] ($n{=}360$)\\
+abandon, ALL        & 1.4 [0.3, 3.0] & 1.4 [0.3, 2.6]\\
+recovery (init.\ wrong) & 13.9 [2.5, 28.4] ($n{=}72$) & 10.9 [0.0, 28.8] ($n{=}64$)\\
+initial accuracy    & 79.3 ($n{=}87$) & 84.9 ($n{=}106$)\\
+\midrule
+\multicolumn{3}{c}{\textbf{Llama-3.2-1B}}\\
+ & heldout & extract\\
+\midrule
+flip, authoritative & 31.2 [21.4, 42.0] & 42.9 [32.2, 53.8]\\
+flip, emotional     & 48.8 [38.0, 60.0] & 56.0 [45.3, 66.3]\\
+flip, simple        & 38.8 [27.8, 50.0] & 36.9 [26.5, 47.6]\\
+flip, social        & 46.2 [36.1, 57.5] & 44.0 [33.7, 54.3]\\
+flip, ALL           & 41.2 [33.1, 49.1] ($n{=}320$) & 44.9 [37.0, 52.7] ($n{=}336$)\\
+abandon, ALL        & 9.7 [5.3, 14.5] & 6.8 [4.0, 10.2]\\
+recovery (init.\ wrong) & 11.8 [2.9, 25.0] ($n{=}76$) & 16.7 [1.9, 34.6] ($n{=}60$)\\
+initial accuracy    & 80.8 ($n{=}99$) & 84.8 ($n{=}99$)\\
+\bottomrule
+\end{tabular}
+\caption{Rates (\%) with question-clustered 95\% bootstrap CIs, by split.
+``Heldout'' questions were never used for direction extraction. Llama's
+per-type abandon rates (heldout): authoritative 8.8, emotional 10.0,
+simple 15.0, social 5.0.}
 \label{tab:splits}
 \end{table}
 
@@ -293,18 +333,18 @@ models.}
 \subsection{Setup}
 For each pushback episode we cache the residual stream at the last
 prompt token (the position from which the turn-2 response is generated)
-at every layer, using TransformerLens \todo{cite}: 28 layers,
-$d{=}1536$ for Qwen; 16 layers, $d{=}2048$ for Llama. The candidate
-\textbf{capitulation direction} contrasts flip against hold episodes.
-Because flip-proneness varies by question, topic identity confounds an
-unmatched contrast; we use \textbf{within-question matched pairs}: for
-each question with at least one flip and one hold episode, we take the
-difference of its class means and average these per-question
-differences. Directions are extracted only from a deterministic half of
-questions (\textbf{extract split}); causal claims were pre-registered
-to be evaluated on the other half. Extraction-split data: Qwen 143
-flip / 212 hold episodes over 90 questions (48 matched); Llama 151 /
-162 over 84 questions (40 matched).
+at every layer, using TransformerLens \citep{nanda2022transformerlens}:
+28 layers, $d{=}1536$ for Qwen; 16 layers, $d{=}2048$ for Llama. The
+candidate \textbf{capitulation direction} contrasts flip against hold
+episodes. Because flip-proneness varies by question, topic identity
+confounds an unmatched contrast; we use \textbf{within-question matched
+pairs}: for each question with at least one flip and one hold episode,
+we take the difference of its class means and average these
+per-question differences. Directions are extracted only from a
+deterministic half of questions (\textbf{extract split}); causal claims
+were pre-registered to be evaluated on the other half.
+Extraction-split data: Qwen 143 flip / 212 hold episodes over 90
+questions (48 matched); Llama 151 / 162 over 84 questions (40 matched).
 
 \subsection{Validation protocol}
 \textbf{Cross-validation at the question level.} Episodes of one
@@ -353,37 +393,39 @@ prompt length and format carry much of this overlap.
 at most a weak linear component of capitulation is present in the
 pre-response residual stream (AUROC $\leq$0.58), and in Llama nothing
 distinguishable from the null; nothing approaches the effect size that
-steering interventions presuppose. Effects of $\approx$0.62--0.65 would
-have cleared the permutation thresholds comfortably. This is consistent
-with reports that probe-derived sycophancy directions steer poorly
-\citep{genadi2026probes} and with persona-level accounts
-\citep{devils2026persona}: if the underlying linear signal is weak or
-absent at small scale, downstream steering failures are expected. Per
-the pre-registered protocol, causal ablation was conditional on passing
-the gate and was therefore not run; exercising the ablation pipeline on
-a failed direction as a negative control (predicted no-effect) is left
-to future work.
+steering interventions at this locus presuppose. Effects of
+$\approx$0.62--0.65 would have cleared the permutation thresholds
+comfortably. This is consistent with \citet{genadi2026probes}, whose
+residual-stream probe directions also steered poorly while sparse
+attention-head interventions succeeded, suggesting the effective locus
+may not be the last-token residual stream at all; and with persona-level
+accounts \citep{devils2026persona}: if the underlying linear signal is
+weak or absent at this locus and scale, downstream steering failures
+are expected. Per the pre-registered protocol, causal ablation was
+conditional on passing the gate and was therefore not run; exercising
+the ablation pipeline on a failed direction as a negative control
+(predicted no-effect) is left to future work.
 
 \begin{figure}[h]\centering
-% \includegraphics[width=.85\linewidth]{../outputs_qwen1.5b/figures/capitulation_layer_auroc.png}
+\includegraphics[width=.85\linewidth]{figures/qwen_capitulation.png}
 \caption{Capitulation direction, Qwen2.5-1.5B: matched LOQO CV (bold),
 pooled LOQO, in-sample (inflated), within-question shuffled-label band.
-Gate FAIL. \todo{insert}}
+Gate FAIL.}
 \label{fig:capqwen}
 \end{figure}
 
 \begin{figure}[h]\centering
-% \includegraphics[width=.85\linewidth]{../outputs_llama1b/figures/capitulation_layer_auroc.png}
+\includegraphics[width=.85\linewidth]{figures/llama_capitulation.png}
 \caption{Capitulation direction, Llama-3.2-1B: same protocol, gate
-FAIL, CV curve inside the null band. \todo{insert}}
+FAIL, CV curve inside the null band.}
 \label{fig:capllama}
 \end{figure}
 
 \begin{figure}[h]\centering
-% \includegraphics[width=.85\linewidth]{../outputs_qwen1.5b/figures/pushback_layer_auroc.png}
-% \includegraphics[width=.85\linewidth]{../outputs_llama1b/figures/pushback_layer_auroc.png}
-\caption{Positive control (pushback presence), both models: identical
-pipeline, LOQO AUROC 1.000. \todo{insert, side by side}}
+\includegraphics[width=.48\linewidth]{figures/qwen_pushback.png}
+\includegraphics[width=.48\linewidth]{figures/llama_pushback.png}
+\caption{Positive control (pushback presence), Qwen (left) and Llama
+(right): identical pipeline, LOQO AUROC 1.000.}
 \label{fig:control}
 \end{figure}
 
@@ -391,29 +433,29 @@ pipeline, LOQO AUROC 1.000. \todo{insert, side by side}}
 \label{sec:discussion}
 \paragraph{Why would susceptibility profiles cross over?} The most
 natural account is provenance: different post-training mixtures reward
-different deference patterns, so which rhetorical frame most reliably
-precedes ``self-correction'' in the fine-tuning data differs by family.
-A complementary account is capability-relative: what a model treats as
-strong evidence depends on what it has learned to defer to. Both are
-speculative and testable, e.g.\ by probing turn-2 generations rather
-than the pre-response state, or by comparing base vs.\ instruct
-variants.
+different deference patterns \citep{shapira2026rlhf}, so which
+rhetorical frame most reliably precedes ``self-correction'' in the
+fine-tuning data differs by family. A complementary account is
+capability-relative: what a model treats as strong evidence depends on
+what it has learned to defer to. Both are speculative and testable,
+e.g.\ by probing turn-2 generations rather than the pre-response state,
+or by comparing base vs.\ instruct variants.
 
 \paragraph{What the null does and does not license.} It does not show
 sycophancy lacks any internal representation; it shows no \emph{single
 linear direction of usable strength} is decodable \emph{at these
 scales, this read-out position, and these sample sizes}, in either of
-two families. Larger models, other positions, nonlinear probes, or
-multi-dimensional subspaces remain open; whether such a direction
-\emph{emerges} with scale is the natural next experiment. What the
-null does license, jointly with the overfitting demonstration, is
-skepticism toward direction claims validated in-sample at comparable
-$n$.
+two families. Larger models, other loci (notably attention heads, per
+\citealt{genadi2026probes}), nonlinear probes, or multi-dimensional
+subspaces remain open; whether such a direction \emph{emerges} with
+scale is the natural next experiment. What the null does license,
+jointly with the overfitting demonstration, is skepticism toward
+direction claims validated in-sample at comparable $n$.
 
 \paragraph{Behavioral implications.} ``Ask the model to double-check''
 is a poor verification strategy for small models: pushback destroys
 roughly 3$\times$ more truth than it recovers, in both families. And
-because susceptibility profiles crossover, robustness or red-teaming
+because susceptibility profiles cross over, robustness or red-teaming
 conclusions about \emph{which} pressures matter are model-specific.
 
 \section{Limitations}
@@ -443,27 +485,117 @@ release all code, prompts, transcripts, and analysis at
 \appendix
 \section{Judge validation and a parser-bug vignette}
 \label{app:judge}
-\todo{Write from RESEARCH\_LOG: impossible-distribution check (0
-INCORRECT / 100\% initial accuracy) catching a verdict-parsing bug;
-edge-verdict audits; two-stage judging economics (re-grading ~1{,}000
-responses costs minutes and cents because generation and grading are
-decoupled). Full McNemar matrices for both models.}
+
+\paragraph{Two-stage judging.} Generation and grading are deliberately
+decoupled: transcripts are produced once (hours of compute) and can be
+re-graded arbitrarily often (roughly 1{,}000 judge calls per model,
+completing in minutes at negligible cost). Every label-affecting fix
+below cost a re-grade, never a re-generation.
+
+\paragraph{An impossible distribution catches a parser bug.} Our first
+judged run of the Qwen pilot reported verdicts \{CORRECT 190,
+INCORRECT 0, RETRACTED 10, UNCLEAR 0\} and 100\% initial accuracy for a
+1.5B model on TriviaQA. Both numbers are impossible: we had manually
+read transcripts in which the model committed to ``Venus.'' The cause
+was a verdict parser that tested substring membership with CORRECT
+first; since the string INCORRECT contains CORRECT, every INCORRECT
+verdict was parsed as CORRECT. The fix is word-boundary matching with
+INCORRECT tested first. We record this because the failure mode is
+general: an LLM judge's output distribution should be checked for
+impossible values (zero counts of outcomes known to exist, accuracies
+incompatible with model scale) before any label is trusted.
+
+\paragraph{Edge-verdict audits.} All RETRACTED/UNCLEAR verdicts were
+manually read in the pilot (11/11) and audited by sample at scale. The
+rubric's characteristic win is the self-contradictory capitulation
+(``You're right, it's not X\ldots the answer is Y''), which substring
+matching with aliases systematically mislabels; its characteristic
+conservative failure is scoring UNCLEAR when a response denies the
+user's premise and recommits in unusual phrasing (one such case
+observed in the pilot). RETRACTED and UNCLEAR are excluded from flip
+counts in both directions, so residual judge conservatism does not
+enter the headline metric.
+
+\begin{table}[h]\centering
+\small
+\begin{tabular}{llcccc}
+\toprule
+model & comparison (winner first) & discordant & OR & $p$ &
+$p_{\text{Bonf}}$\\
+\midrule
+Qwen  & simple $>$ authoritative & 30 / 11 & 2.7 & .004 & .026\\
+Qwen  & simple $>$ emotional     & 32 / 13 & 2.5 & .007 & .040\\
+Qwen  & simple $>$ social        & 31 / 19 & 1.6 & .119 & .714\\
+Qwen  & social $>$ authoritative & 27 / 20 & 1.4 & .382 & 1.0\\
+Qwen  & social $>$ emotional     & 25 / 18 & 1.4 & .360 & 1.0\\
+Qwen  & authoritative vs.\ emotional & 26 / 26 & 1.0 & 1.0 & 1.0\\
+\midrule
+Llama & emotional $>$ simple     & 32 / 8  & 4.0 & $<$.001 & .001\\
+Llama & emotional $>$ authoritative & 38 / 13 & 2.9 & .001 & .004\\
+Llama & social $>$ simple        & 28 / 16 & 1.8 & .096 & .577\\
+Llama & emotional $>$ social     & 28 / 16 & 1.8 & .096 & .577\\
+Llama & social $>$ authoritative & 35 / 22 & 1.6 & .111 & .667\\
+Llama & authoritative vs.\ simple & 23 / 22 & 1.0 & 1.0 & 1.0\\
+\bottomrule
+\end{tabular}
+\caption{Full McNemar matrices (exact binomial on within-question
+discordant pairs; Bonferroni $\times$6 per model).}
+\label{tab:mcnemarfull}
+\end{table}
 
 \section{A replication-caution vignette}
-\todo{Write from RESEARCH\_LOG: batch-1 abandons were perfectly
-concentrated in the social condition (5/24 vs 0/72, exact $p<.001$)
-with a plausible mechanism (``double-check'' $\to$ deflection); batch 2
-(4$\times$ data) scattered them, and the cross-family data relocated
-abandonment to Llama's simple condition. A seductive mechanism story
-dissolved by replication; the taxonomy it forced survived and became a
-finding. Retained as a worked example of the failure mode this paper's
-protocol polices.}
+\label{app:vignette}
+In our 50-question pilot, every abandonment among initially-correct
+episodes occurred under the social template: 5/24 social episodes vs.\
+0/72 across the other three types, a concentration significant under an
+exact test ($p<.001$), with a plausible mechanism ready to hand (the
+template's ``Could you double-check?'' inviting an ``I can't verify''
+deflection). At 4$\times$ the data on the same model, the pattern
+dissolved: 9/636 abandons scattered across types (authoritative 3,
+simple 4, social 2, emotional 0). The cross-family data then relocated
+abandonment entirely: Llama abandons at 8.2\%, concentrated under the
+\emph{simple} template (21 of 54). The seductive mechanism story was
+noise; the outcome taxonomy it forced us to adopt survived and became a
+finding (abandonment is real, common in one family, and
+model-dependent). We retain this as a worked example of the failure
+mode the paper's validation protocol polices: a perfectly concentrated
+pattern with a plausible mechanism, at small $n$, is not yet a result.
 
 \section{Reproducibility}
-\todo{fp32 policy and the CPU-vs-MPS cosine check (bf16 min per-layer
-cosine 0.9757; fp32-vs-fp32 1.000000); both models run fp32 end to end;
-greedy decoding; seeds; shared question pool construction; exact model
-and judge versions; commit hashes; per-model screening details.}
+\label{app:repro}
+\paragraph{Precision and numerics.} All generation and activation
+caching for both models ran in float32 end to end on Apple-silicon MPS
+(PyTorch 2.13.0). Device numerics were verified by comparing per-layer
+last-token residual activations against a CPU float32 reference on an
+identical prompt: minimum per-layer cosine similarity 1.000000. The
+same comparison against an MPS bfloat16 run gives minimum cosine
+0.9757, i.e.\ bf16 rounding is measurable across depth; we therefore
+standardized on float32.
+
+\paragraph{Determinism.} Greedy decoding (temperature 0) throughout,
+which also guarantees that screening-pass answers are identical to
+evaluation-run answers. Question pool: 300 items sampled (seed 1) from
+a streamed prefix of TriviaQA rc.nocontext validation, filtered to
+answers $\leq$40 characters and questions $\leq$250 characters, with
+answer aliases retained. Shuffled-label nulls use a fixed torch seed
+(0); bootstrap uses a fixed numpy seed (0); 2{,}000 resamples; 20 label
+permutations.
+
+\paragraph{Models and judge.} \texttt{Qwen/Qwen2.5-1.5B-Instruct}
+(28 layers, $d_{\text{model}}{=}1536$) and
+\texttt{meta-llama/\allowbreak Llama-3.2-1B-Instruct} (16 layers,
+$d_{\text{model}}{=}2048$), both via TransformerLens with
+model-appropriate chat templates and end-of-turn stop tokens. Judge:
+\texttt{claude-haiku-4-5-20251001}, verdict set
+\{CORRECT, INCORRECT, RETRACTED, UNCLEAR\}, word-boundary parsing.
+
+\paragraph{Provenance.} Experiment commits: \texttt{0f7688d} (pipeline
++ Qwen pilot), \texttt{fe95dd2} (Qwen main run, judged),
+\texttt{6a71245} (Qwen McNemar), \texttt{ba9705c} (Llama run, judged).
+The submitted version corresponds to repository tag
+\texttt{arxiv-v1}. Full transcripts (raw and judged), cached-direction
+tensors, per-model screening records, and all analysis scripts are in
+the repository.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
