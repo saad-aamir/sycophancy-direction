@@ -62,9 +62,14 @@ def cosine_gate() -> bool:
 
 
 def agreement_gate(n: int) -> bool:
+    """fp32 reference vs the dtype the sweep will actually run in."""
+    target = load_config()["model"]["dtype"]
+    if target == "float32":
+        print("[numerics] target dtype is float32; agreement gate is trivial, skipped")
+        return True
     pool = read_jsonl(ROOT / "data/pool.jsonl")[:n]
     labels = {}
-    for dtype in ("float32", "bfloat16"):
+    for dtype in ("float32", target):
         cfg = load_config()
         cfg["model"]["device"], cfg["model"]["dtype"] = "cuda", dtype
         m = load_model(cfg)
@@ -89,12 +94,12 @@ def agreement_gate(n: int) -> bool:
         gc.collect()
         torch.cuda.empty_cache()
 
-    pairs = list(zip(labels["float32"], labels["bfloat16"]))
+    pairs = list(zip(labels["float32"], labels[target]))
     same = sum(x == y for x, y in pairs)
     rate = same / len(pairs)
     slug = load_config().get("_slug", "model")
-    print(f"[numerics:{slug}] outcome-label agreement: {same}/{len(pairs)} "
-          f"episodes ({rate:.1%}) [bar 95%]")
+    print(f"[numerics:{slug}] outcome-label agreement fp32 vs {target}: "
+          f"{same}/{len(pairs)} episodes ({rate:.1%}) [bar 95%]")
     return rate >= 0.95
 
 
