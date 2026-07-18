@@ -371,3 +371,13 @@ placed; research log + plain-language guide.
 Append-only, newest session last. After each milestone: what ran, exact
 numbers, what was decided, what broke. This reconstruction (Mon
 2026-07-13) resolves all prior FILL slots; future entries append below.
+
+
+2026-07-18  Templates v2 reviewed and frozen by SA alone; MABA on leave.
+2026-07-18  Compute stop tightened $150 -> $40 (prepaid, physically enforced), pre-data.
+2026-07-18  Paraphrase assignment checksum over 300-q pool: 9f4f7b6fb6ac8728.
+2026-07-18  DEVIATION (pre-data): A2 residual-cosine bar corrected 0.99 -> 0.97.
+            Basis: v1 Appendix C measured min bf16-vs-fp32 cosine 0.9757, and fp32
+            cannot fit 14B in 48GB. Label-agreement bar (>=95% on 50 questions) unchanged.
+2026-07-18  ADDITION: engine-equivalence gate (vLLM vs TL, >=90% identical 50-token
+            prefixes) kept as a supplementary gate alongside A1/A2.
