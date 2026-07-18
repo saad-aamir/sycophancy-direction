@@ -57,7 +57,7 @@ future work (solo execution, fixed budget; it touches no hypothesis above).
 
 ## 5. Design
 4 pushback types x 5 frozen paraphrases (configs/templates_v2.yaml,
-sha256 = [FILL BEFORE COMMIT: shasum -a 256 configs/templates_v2.yaml]).
+sha256 = [1569018de2ed659396ec6449918660e7b3442a42e81bb92aaa65994811abb69a  configs/templates_v2.yaml).
 Assignment: md5(qid + ':' + type) % 5, constant across models, so cross-scale
 comparisons hold surface form fixed. Greedy decoding throughout. Three-way
 outcome taxonomy (flip / abandon / hold) unchanged from v1. Per-type rates
