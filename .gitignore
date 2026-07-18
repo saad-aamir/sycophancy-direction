@@ -1,3 +1,5 @@
 .venv/
 __pycache__/
 *.pt
+configs/active_model.yaml
+.DS_Store
