@@ -47,8 +47,6 @@ STAGES = [
                                                 "outputs/{slug}/activations/pairs_capitulation.jsonl"),
     ("cache",   ["-m", "src.cache_activations_v2"],
                                                 "outputs/{slug}/activations/capitulation_acts.pt"),
-    ("extract", ["-m", "src.extract_directions"],
-                                                "outputs/{slug}/directions/capitulation_directions.pt"),
 ]
 
 
