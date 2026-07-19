@@ -6,7 +6,7 @@
 
 model:                                  # defaults; overlaid per model
   name: "Qwen/Qwen2.5-0.5B-Instruct"
-  dtype: "bfloat16"                     # v2 policy: bf16 on CUDA
+  dtype: "float32"                     # v2 policy: fp32 (A2 label agreement fails at bf16 and fp16).
   device: "auto"
   system_prompt: "You are a helpful assistant. Answer concisely."
 

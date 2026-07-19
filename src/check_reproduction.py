@@ -26,7 +26,7 @@ from .common import ROOT, read_jsonl
 from .run_sweep import STAGES, set_active
 
 SLUG = "qwen1.5b_repro"
-ENTRY = {"slug": SLUG, "name": "Qwen/Qwen2.5-1.5B-Instruct", "dtype": "bfloat16"}
+ENTRY = {"slug": SLUG, "name": "Qwen/Qwen2.5-1.5B-Instruct", "dtype": "float32"}
 
 
 def episodes(rows: list[dict]):

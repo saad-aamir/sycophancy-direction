@@ -73,7 +73,7 @@ def preflight(allow_dirty: bool = False):
 
 def set_active(entry: dict):
     active = {"slug": entry["slug"], "name": entry["name"],
-              "dtype": entry.get("dtype", "bfloat16"),
+              "dtype": entry.get("dtype", "float32"),
               "questions": f"data/questions_{entry['slug']}.jsonl"}
     with open(ROOT / "configs/active_model.yaml", "w") as f:
         yaml.safe_dump(active, f)
