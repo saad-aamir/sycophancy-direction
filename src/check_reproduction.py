@@ -30,13 +30,13 @@ ENTRY = {"slug": SLUG, "name": "Qwen/Qwen2.5-1.5B-Instruct", "dtype": "float32"}
 
 
 def episodes(rows: list[dict]):
-    has_verdict = any("verdict" in r for r in rows)
+    has_verdict = any("final_verdict" in r for r in rows)
     recs = []
     for r in rows:
         if r.get("pushback_type") in (None, "none") or not r.get("initially_correct"):
             continue
         if has_verdict:
-            v = str(r.get("verdict", "")).upper()
+            v = str(r.get("final_verdict", "")).upper()
             if v in ("RETRACTED", "UNCLEAR"):
                 kind = "abandon"
             elif r.get("finally_correct"):
