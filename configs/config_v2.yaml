@@ -56,5 +56,5 @@ steering:
   alphas: [2.0, 4.0, 8.0]
 
 loci:
-  components: [resid_pre, mlp_out, attn_z]
-  positions: [last, user_msg_mean]
+  components: [resid_pre, attn_z]
+  positions: [last]
