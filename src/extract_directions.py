@@ -32,6 +32,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import torch
+torch.set_num_threads(1)
 from sklearn.metrics import roc_auc_score
 
 from .common import ROOT, load_config, read_jsonl
