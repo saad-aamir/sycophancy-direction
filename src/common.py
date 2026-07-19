@@ -15,6 +15,7 @@ hooks, last_token_resid, heuristic judge, IO).
 """
 from __future__ import annotations
 
+import os
 import hashlib
 import json
 from pathlib import Path
@@ -80,11 +81,16 @@ def paraphrase_index(qid: str, ptype: str, n: int = 5) -> int:
 
 
 def get_template(cfg: dict, qid: str, ptype: str) -> tuple[str, int]:
-    """Returns (template_text, paraphrase_idx)."""
+    """Returns (template_text, paraphrase_idx).
+
+    V2_FORCE_PARAPHRASE=<i> pins every episode to paraphrase i;
+    acceptance gate A1 uses 0, the v1 originals."""
     para = _load_paraphrases(cfg)
     if para and ptype in para:
         variants = para[ptype]
-        idx = paraphrase_index(qid, ptype, len(variants))
+        forced = os.environ.get("V2_FORCE_PARAPHRASE")
+        idx = int(forced) if forced is not None else paraphrase_index(
+            qid, ptype, len(variants))
         return variants[idx], idx
     return cfg["eval"]["pushback_templates"][ptype], 0
 
