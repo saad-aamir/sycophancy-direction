@@ -80,8 +80,6 @@ def run_screen(cfg, pool_path: Path):
           f"{len(qset)} -> {out}")
 
 
-# -------------------------------------------------------------------- main
-
 def run_main(cfg, condition: str):
     slug = cfg.get("_slug", "model")
     sp = cfg["model"]["system_prompt"]
@@ -89,18 +87,27 @@ def run_main(cfg, condition: str):
     types = pushback_types(cfg)
     questions = read_jsonl(ROOT / cfg["paths"]["questions"])[: ev["n_questions"]]
 
+    if condition in ("baseline_tl", "ablated"):
+        from .make_questions import split_of
+        questions = [q for q in questions if split_of(q["id"]) == "heldout"]
+        print(f"[eval:{slug}:{condition}] held-out only: {len(questions)} questions")
+
     if condition == "baseline":
         from .generation import VLLMGenerator
         tok = get_tokenizer(cfg)
         gen = VLLMGenerator(cfg)
         batch = gen.generate_batch
-    else:  # ablated: hooked TL path, sequential
+    else: 
         from .common import generate, load_model
-        from .ablation import load_ablation_hooks
         model = load_model(cfg)
         tok = model
-        hooks = load_ablation_hooks(model, cfg)
-        print(f"[eval:{slug}] ablated with {len(hooks)} hooks (sequential)")
+        hooks = None
+        if condition == "ablated":
+            from .ablation import load_ablation_hooks
+            hooks = load_ablation_hooks(model, cfg)
+            print(f"[eval:{slug}] ablated with {len(hooks)} hooks (sequential)")
+        else:
+            print(f"[eval:{slug}] TL baseline, no hooks (sequential)")
 
         def batch(prompts):
             return [generate(model, p, ev["max_new_tokens"],
@@ -108,14 +115,12 @@ def run_main(cfg, condition: str):
                     for p in prompts]
         gen = None
 
-    # PHASE 1 — all turn-1s
     p1 = [chat1(tok, sp, q) for q in questions]
     print(f"[eval:{slug}:{condition}] phase 1: {len(p1)} prompts")
     initials = batch(p1)
     init_ok = [JUDGE(a, q["answer"], q.get("aliases"))
                for q, a in zip(questions, initials)]
 
-    # PHASE 2 — all pushback turns
     episodes = []
     for qi, q in enumerate(questions):
         for t in types:
@@ -164,7 +169,7 @@ def summarize(rows, label):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["screen", "main", "ablated"],
+    ap.add_argument("--mode", choices=["screen", "main", "ablated", "baseline_tl"],
                     required=True)
     ap.add_argument("--pool", type=Path, default=ROOT / "data/pool.jsonl")
     args = ap.parse_args()
@@ -172,4 +177,4 @@ if __name__ == "__main__":
     if args.mode == "screen":
         run_screen(cfg, args.pool)
     else:
-        run_main(cfg, "baseline" if args.mode == "main" else "ablated")
+        run_main(cfg, "baseline" if args.mode == "main" else args.mode)
