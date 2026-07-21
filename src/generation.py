@@ -24,6 +24,9 @@ class VLLMGenerator:
             model=cfg["model"]["name"],
             dtype=str(cfg["model"]["dtype"]),
             gpu_memory_utilization=0.90,
+            max_model_len=4096,   # Llama declares 131072; its fp32 KV cache
+                                  # won't fit 48GB. Prompts are <1k tokens and
+                                  # max_new_tokens=150, so this cannot alter output.
             enforce_eager=False,
         )
         print(f"[vllm] loaded {cfg['model']['name']} "
