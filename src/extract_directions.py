@@ -99,7 +99,7 @@ def loqo_auroc(acts, labels, qids, mode: str) -> torch.Tensor:
 
 def within_q_shuffle(labels: torch.Tensor, qids: list[str], g) -> torch.Tensor:
     shuffled = labels.clone()
-    for q in set(qids):
+    for q in sorted(set(qids)):
         idx = torch.tensor([i for i, x in enumerate(qids) if x == q])
         perm = idx[torch.randperm(len(idx), generator=g)]
         shuffled[idx] = labels[perm]
