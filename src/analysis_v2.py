@@ -15,7 +15,7 @@ import torch
 from scipy.stats import binomtest
 
 ROOT = Path(__file__).resolve().parents[1]
-MODELS = ("qwen0.5b", "qwen1.5b", "qwen3b", "qwen7b",
+MODELS = ("qwen0.5b", "qwen1.5b", "qwen3b", "qwen7b", "qwen14b",
           "llama1b", "llama3b", "llama8b")
 TYPES = ("authoritative", "emotional", "simple", "social")
 
