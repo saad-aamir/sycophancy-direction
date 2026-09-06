@@ -1,0 +1,104 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{sharma2023sycophancy}
+\citation{arditi2024refusal}
+\citation{aamir2026capitulation}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{sharma2023sycophancy,perez2022discovering}
+\citation{wei2023simple}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sycophancy as a behaviour.}{2}{section*.1}\protected@file@percent }
+\citation{zou2023repe,turner2023actadd,li2023iti}
+\citation{arditi2024refusal}
+\citation{hewitt2019control,belinkov2022probing}
+\citation{wei2022emergent}
+\citation{schaeffer2023mirage}
+\citation{joshi2017triviaqa}
+\@writefile{toc}{\contentsline {paragraph}{Linear directions and activation steering.}{3}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Probe validity.}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Emergence with scale.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Pre-registration}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Task, pool, and episode structure}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Pushback templates and paraphrase marginalisation}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Grading}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:grading}{{3.4}{4}{Grading}{subsection.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Judge verdicts against human annotation on 200 sampled episodes. Agreement 81.0\%, $\kappa = 0.707$.}}{5}{table.1}\protected@file@percent }
+\newlabel{tab:judge}{{1}{5}{Judge verdicts against human annotation on 200 sampled episodes. Agreement 81.0\%, $\kappa = 0.707$}{table.1}{}}
+\citation{arditi2024refusal}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Models and precision}{6}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Direction extraction and the validation gate}{6}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:gate}{{3.6}{6}{Direction extraction and the validation gate}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Causal ablation}{6}{subsection.3.7}\protected@file@percent }
+\newlabel{sec:h6}{{3.7}{6}{Causal ablation}{subsection.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Statistical tests}{7}{subsection.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9}Reproducibility}{7}{subsection.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.10}Deviations from the pre-registration}{7}{subsection.3.10}\protected@file@percent }
+\newlabel{sec:deviations}{{3.10}{7}{Deviations from the pre-registration}{subsection.3.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Capitulation direction, residual stream. The gate requires AUROC $\geq 0.70$ and AUROC above the permutation threshold (shuffle mean plus two standard deviations). \textsuperscript  {*}Qwen-0.5B is underpowered: only 17 questions produced both a flip and a hold, and its point estimate sits below its own null band.}}{8}{table.2}\protected@file@percent }
+\newlabel{tab:h1}{{2}{8}{Capitulation direction, residual stream. The gate requires AUROC $\geq 0.70$ and AUROC above the permutation threshold (shuffle mean plus two standard deviations). \textsuperscript {*}Qwen-0.5B is underpowered: only 17 questions produced both a flip and a hold, and its point estimate sits below its own null band}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{8}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}A usable direction emerges between 3B and 7B}{8}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:h1}{{4.1}{8}{A usable direction emerges between 3B and 7B}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The signal is not in attention-head space either}{8}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:h2}{{4.2}{8}{The signal is not in attention-head space either}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Emergence of a usable capitulation direction. Each point is the matched leave-one-question-out AUROC at the model's best layer; the short tick near each point marks that model's own within-question permutation threshold. Filled markers pass the pre-registered gate, open markers fail. The dashed line is the 0.70 usability bar. Both families cross between 3B and 7B to 8B, but Qwen is flat and then steps while Llama climbs gradually.}}{9}{figure.1}\protected@file@percent }
+\newlabel{fig:emergence}{{1}{9}{Emergence of a usable capitulation direction. Each point is the matched leave-one-question-out AUROC at the model's best layer; the short tick near each point marks that model's own within-question permutation threshold. Filled markers pass the pre-registered gate, open markers fail. The dashed line is the 0.70 usability bar. Both families cross between 3B and 7B to 8B, but Qwen is flat and then steps while Llama climbs gradually}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Ablation: gate margin tracks causal efficacy}{9}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:h6res}{{4.3}{9}{Ablation: gate margin tracks causal efficacy}{subsection.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Attention-head scan. ``Max-null'' is the 95th percentile of per-permutation maxima across all head positions; ``$n$ above'' counts heads exceeding it. \textsuperscript  {\dag  }Fails on the pointwise term only, which is unreliable at head level (Section~\ref {sec:pointwise}).}}{10}{table.3}\protected@file@percent }
+\newlabel{tab:h2}{{3}{10}{Attention-head scan. ``Max-null'' is the 95th percentile of per-permutation maxima across all head positions; ``$n$ above'' counts heads exceeding it. \textsuperscript {\dag }Fails on the pointwise term only, which is unreliable at head level (Section~\ref {sec:pointwise})}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Directional ablation on held-out questions. Confidence intervals from a bootstrap resampling questions, 2{,}000 resamples.}}{10}{table.4}\protected@file@percent }
+\newlabel{tab:h6}{{4}{10}{Directional ablation on held-out questions. Confidence intervals from a bootstrap resampling questions, 2{,}000 resamples}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}The cross-family crossover is robust to paraphrase}{10}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:h3res}{{4.4}{10}{The cross-family crossover is robust to paraphrase}{subsection.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Change in flip rate after ablating the capitulation direction, with question-clustered 95\% bootstrap intervals. Ordered by how far each direction cleared the 0.70 usability bar. Only Qwen-7B, which cleared it comfortably, shows an effect; the gate-failing direction and the marginally passing one do not.}}{11}{figure.2}\protected@file@percent }
+\newlabel{fig:ablation}{{2}{11}{Change in flip rate after ablating the capitulation direction, with question-clustered 95\% bootstrap intervals. Ordered by how far each direction cleared the 0.70 usability bar. Only Qwen-7B, which cleared it comfortably, shows an effect; the gate-failing direction and the marginally passing one do not}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces McNemar tests on within-question discordant pairs, flips only, Bonferroni corrected across the four pre-registered type comparisons. \textsuperscript  {e}Exploratory: not among the four models named in the pre-registration.}}{11}{table.5}\protected@file@percent }
+\newlabel{tab:h3}{{5}{11}{McNemar tests on within-question discordant pairs, flips only, Bonferroni corrected across the four pre-registered type comparisons. \textsuperscript {e}Exploratory: not among the four models named in the pre-registration}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Pushback stops being net-destructive with scale}{11}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:h5res}{{4.5}{11}{Pushback stops being net-destructive with scale}{subsection.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Odds ratios from within-question McNemar tests, emotional over simple. Values below one mean simple pushback destabilises the model more. Filled markers are the four confirmatory models named in the pre-registration; open markers are exploratory. Asterisks mark $p_{\mathrm  {Bonf}} < 0.05$. Every Qwen sits at or below one and both larger Llamas sit above it.}}{12}{figure.3}\protected@file@percent }
+\newlabel{fig:crossover}{{3}{12}{Odds ratios from within-question McNemar tests, emotional over simple. Values below one mean simple pushback destabilises the model more. Filled markers are the four confirmatory models named in the pre-registration; open markers are exploratory. Asterisks mark $p_{\mathrm {Bonf}} < 0.05$. Every Qwen sits at or below one and both larger Llamas sit above it}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Measurement hazards}{12}{section.5}\protected@file@percent }
+\newlabel{sec:hazards}{{5}{12}{Measurement hazards}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Numerical precision moves roughly one label in ten}{12}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Flip rate conditioned on an initially correct answer, recovery rate conditioned on an initially incorrect one, and their ratio.}}{13}{table.6}\protected@file@percent }
+\newlabel{tab:h5}{{6}{13}{Flip rate conditioned on an initially correct answer, recovery rate conditioned on an initially incorrect one, and their ratio}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Conflating flips with abandonment can reverse a comparison}{13}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Paraphrases that omit a reconsideration cue provoke premise refusal}{13}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ratio of flip rate to recovery rate against scale, log axes. Above the dashed line pushback destroys more correct answers than it repairs. The ratio declines monotonically in both families and reaches parity by 7B to 8B, falsifying the pre-registered prediction that the asymmetry holds at every scale.}}{14}{figure.4}\protected@file@percent }
+\newlabel{fig:recovery}{{4}{14}{Ratio of flip rate to recovery rate against scale, log axes. Above the dashed line pushback destroys more correct answers than it repairs. The ratio declines monotonically in both families and reaches parity by 7B to 8B, falsifying the pre-registered prediction that the asymmetry holds at every scale}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Hooked generation degenerates on one model family}{14}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:degeneracy}{{5.4}{14}{Hooked generation degenerates on one model family}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Parametric thresholds fail on heavy-tailed head-level nulls}{15}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:pointwise}{{5.5}{15}{Parametric thresholds fail on heavy-tailed head-level nulls}{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{15}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Probe quality predicts causal relevance, and significance does not}{15}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Two changes in the same scale window, with different shapes}{16}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}The plateau, and an alternative explanation for it}{16}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:plateau}{{6.3}{16}{The plateau, and an alternative explanation for it}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Family differences are not only about scale}{16}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}What the causal result does and does not license}{16}{subsection.6.5}\protected@file@percent }
+\citation{meta2024llama32}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Limitations}{17}{section.7}\protected@file@percent }
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{aamir2026capitulation}{{1}{2026}{{Aamir and Bin~Adil}}{{}}}
+\bibcite{arditi2024refusal}{{2}{2024}{{Arditi et~al.}}{{Arditi, Obeso, Syed, Paleka, Panickssery, Gurnee, and Nanda}}}
+\bibcite{belinkov2022probing}{{3}{2022}{{Belinkov}}{{}}}
+\bibcite{hewitt2019control}{{4}{2019}{{Hewitt and Liang}}{{}}}
+\bibcite{joshi2017triviaqa}{{5}{2017}{{Joshi et~al.}}{{Joshi, Choi, Weld, and Zettlemoyer}}}
+\bibcite{li2023iti}{{6}{2023}{{Li et~al.}}{{Li, Patel, Vi{\'e}gas, Pfister, and Wattenberg}}}
+\bibcite{meta2024llama32}{{7}{2024}{{Meta AI}}{{}}}
+\bibcite{perez2022discovering}{{8}{2022}{{Perez et~al.}}{{Perez, Ringer, Luko{\v {s}}i{\=u}t{\.e}, et~al.}}}
+\bibcite{schaeffer2023mirage}{{9}{2023}{{Schaeffer et~al.}}{{Schaeffer, Miranda, and Koyejo}}}
+\bibcite{sharma2023sycophancy}{{10}{2024}{{Sharma et~al.}}{{Sharma, Tong, Korbak, Duvenaud, Askell, Bowman, Cheng, Durmus, Hatfield-Dodds, Johnston, Kravec, Maxwell, McCandlish, Ndousse, Rausch, Schiefer, Yan, Zhang, and Perez}}}
+\bibcite{turner2023actadd}{{11}{2023}{{Turner et~al.}}{{Turner, Thiergart, Udell, Leech, Mini, and MacDiarmid}}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Future work}{18}{section.8}\protected@file@percent }
+\bibcite{wei2022emergent}{{12}{2022}{{Wei et~al.}}{{Wei, Tay, Bommasani, Raffel, Zoph, Borgeaud, Yogatama, Bosma, Zhou, Metzler, Chi, Hashimoto, Vinyals, Liang, Dean, and Fedus}}}
+\bibcite{wei2023simple}{{13}{2023}{{Wei et~al.}}{{Wei, Huang, Lu, Zhou, and Le}}}
+\bibcite{zou2023repe}{{14}{2023}{{Zou et~al.}}{{Zou, Phan, Chen, Campbell, et~al.}}}
+\gdef \@abspage@last{19}

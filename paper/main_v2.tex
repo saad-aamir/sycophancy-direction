@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xcolor}
+\usepackage[numbers]{natbib}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+% ============================================================
+% v2, standalone. Cites v1 (aamir2026capitulation) as prior work.
+% Every number regenerates from `python -m src.analysis_v2`.
+% Outstanding before submission:
+%   - inter-annotator kappa (needs annotation/sheet_B.csv filled)
+%   - deviation log in RESEARCH_LOG.md brought up to six entries
+% ============================================================
+
+\title{A Capitulation Direction Emerges With Scale and Is Causally\\
+Load-Bearing Where Validation Is Strong:\\
+\large Eight Models, Two Families, and Four Measurement Hazards}
+
+\author{Saad Aamir\\ \small Independent researcher\\
+\small \texttt{saadaamir473@gmail.com}
+\and Muhammad Awais Bin Adil\\ \small Independent researcher\\
+\small \texttt{binadilawais@gmail.com}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\input{sections/abstract}
+
+\input{sections/introduction}
+
+\input{sections/related}
+
+\input{sections/methods}
+
+\input{sections/results}
+
+\input{sections/hazards}
+
+\input{sections/discussion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

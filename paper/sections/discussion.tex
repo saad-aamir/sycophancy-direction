@@ -1,0 +1,144 @@
+% Discussion and limitations, standalone v2 paper.
+% Judge-validation limitation merged in.
+
+\section{Discussion}
+
+\subsection{Probe quality predicts causal relevance, and significance does not}
+
+The three ablations in Section~\ref{sec:h6res} order cleanly by how far each direction
+cleared the usability bar. A direction at 0.632, which failed the gate but comfortably
+exceeded its permutation null, moved behaviour not at all. A direction at 0.710, ten
+thousandths over the bar, also moved nothing. A direction at 0.778 reduced flips by 4.8
+percentage points.
+
+The first of those is the one worth dwelling on. Qwen-1.5B's direction is statistically
+significant against a properly constructed within-question null. Under a
+significance-only criterion it would be reported as a discovered feature, and a reader
+would reasonably expect intervening on it to do something. It does nothing. Significance
+against a null tells you a direction carries information about the label; it does not tell
+you the model uses that direction to produce the behaviour, and at this effect size the gap
+between those two claims is the whole result.
+
+This bears on a recurring puzzle in the interpretability literature, where probes achieve
+high accuracy on a concept and steering along the probe direction produces weak or
+inconsistent behavioural change. Our results suggest one mundane contributor: probe
+accuracy thresholds matter, and the interesting region is above the level at which
+significance is achieved. We would not generalise a specific number from three models, but
+we would suggest that papers reporting a probe and papers reporting a steering effect are
+often not describing directions of comparable quality.
+
+\subsection{Two changes in the same scale window, with different shapes}
+
+Linear decodability is flat through 3B in Qwen and then jumps. The behavioural asymmetry
+between destroying and repairing truth declines smoothly across the whole range, in both
+families, arriving at parity independently. Both changes happen between roughly 1B and 8B,
+but a step and a smooth decline are not the same function, and the simplest reading is that
+they are not the same underlying change.
+
+That is worth stating because the tempting story, that models become resistant to pushback
+and that resistance becomes linearly readable, would predict the two curves to move
+together. They do not.
+
+\subsection{The plateau, and an alternative explanation for it}
+\label{sec:plateau}
+
+Qwen-14B scores 0.720 against Qwen-7B's 0.778, so decodability does not continue rising once
+it crosses the bar. We report this because it is what we measured, but we are not confident
+it reflects saturation of the underlying representation.
+
+The competing explanation is statistical power. Qwen-14B is the most robust model in the
+study: it flips on 15.1\% of episodes, the lowest rate we observed, which yields only 123
+flip episodes and 61 matched questions. Qwen-7B, with a higher flip rate, yields 75 matched
+questions. A direction fitted on fewer positive examples is estimated less precisely, and the
+leave-one-question-out estimate falls accordingly. Distinguishing genuine plateau from power
+loss would require either a larger question pool at the top of the range or a task on which
+large models capitulate more often, and we regard the plateau as suggestive rather than
+established.
+
+\subsection{Family differences are not only about scale}
+
+Qwen and Llama differ in more than their position on the curve. Qwen approaches the bar as a
+step and Llama as a gradual climb. The crossover in pushback-type susceptibility runs in
+opposite directions between families and holds up an order of magnitude of scale. Llama
+models also show markedly less unified pushback representations: cosine similarity between
+per-type pushback directions runs 0.38 to 0.51 for the smaller Llamas against 0.83 to 0.96
+across Qwen, meaning the four pressure types are represented more distinctly in Llama.
+
+Whatever produces capitulation is therefore shaped substantially by training data or
+post-training procedure and not only by capability. This limits how far any single-family
+mechanistic result should be extrapolated, including ours.
+
+\subsection{What the causal result does and does not license}
+
+Ablating a single direction at one layer of one model reduced capitulation by roughly a
+quarter in relative terms, while leaving abandonment essentially unchanged. That is a real
+effect and a specific one. It is not a solution to sycophancy, and it is not evidence that
+capitulation is a single linear feature. Three quarters of the behaviour survives the
+intervention, and the same intervention on a different family at a similar probe quality
+does nothing at all. The defensible claim is that a linear direction is causally implicated
+in capitulation in Qwen-7B, not that we have located the mechanism.
+
+\section{Limitations}
+
+\textbf{One task family.} Every episode is a closed-book factual question with a short
+answer. Capitulation on reasoning chains, on code, on subjective judgements, or on
+multi-turn dialogue may behave differently, and the flip and hold taxonomy may not transfer
+cleanly to tasks without a single correct answer.
+
+\textbf{The Llama points are not independent scale points.} Llama-3.2-1B and 3B were not
+pretrained at their own scale. Meta produced them by structured pruning from Llama-3.1-8B,
+then recovered performance by distilling from the 8B and 70B models, using their logits as
+token-level targets during pre-training \citep{meta2024llama32}. The 8B model in our study
+is therefore the teacher of the other two, so the gradual Llama climb in
+Table~\ref{tab:h1} may reflect partial inheritance of representational structure from a
+single parent rather than an independent effect of scale. The Qwen2.5 models are separately
+pretrained at each size, which is one reason we treat the step shape as the Qwen-specific
+observation and avoid strong cross-family claims about the shape of emergence.
+
+\textbf{Judge validation is partial.} All verdicts come from a single LLM judge under one
+rubric, validated against human annotation at $\kappa = 0.707$, which clears the threshold
+we set in advance but not by much: roughly one label in five differs from a human reading of
+the same episode. The annotation was performed by an author rather than an independent
+rater, and was not blind to the study's hypotheses, so it establishes that the rubric is
+applied consistently rather than that it is the right rubric. The sampled episodes come from the two smallest models, so the validation does not directly establish judge reliability on the larger models whose results carry our main claims. Our earlier work showed that
+grading choices move headline rates by 18 to 24 percentage points, which makes this a
+load-bearing component rather than a detail. The disagreements we did observe run toward
+over-counting capitulation, so the rates we report should be read as upper bounds.
+
+\textbf{Small matched-question counts.} Directions are fitted on between 17 and 84 matched
+questions, since a question contributes only if it produced both a flip and a hold. We
+report point estimates of AUROC against a permutation threshold rather than confidence
+intervals on AUROC itself, so the precision of individual estimates is not quantified. This
+particularly affects Qwen-0.5B, which we describe as underpowered rather than null, and it
+is why we emphasise the pattern across models over any single value.
+
+\textbf{Twenty permutations.} The residual-stream null uses the pre-registered 20
+permutations, from which we estimate a mean and a standard deviation. Twenty draws is a
+noisy basis for a standard deviation, and it is part of why thresholds moved measurably
+before we made the permutation ordering deterministic. The head-level analysis uses 200.
+
+\textbf{Greedy decoding, English, and float32.} All generation is greedy at temperature 0,
+which removes sampling variance but describes only one decoding regime. All questions are in
+English. Full precision caps the accessible model sizes on a single accelerator at roughly
+14B, which is why the curve stops there and why no Llama model between 8B and 70B appears.
+
+\textbf{One causal replication attempt.} The causal result rests on one model. The negative
+control and the Llama-8B null constrain its interpretation, but a second family showing the
+effect would constrain it considerably more. The Qwen-14B ablation, which the
+pre-registration makes conditional on its gate pass, was deferred for compute reasons.
+
+\textbf{Hooked generation on Llama.} The Llama-8B causal test ran under a generation path
+that degenerates on 13\% of episodes, symmetric across arms. The contrast is internally
+valid; its external validity to the behavioural results in the same paper is weaker.
+
+\section{Future work}
+
+The most useful next experiments are, in order: extending the judge validation to
+independent annotators at a scale that would let us state a bound on grading-induced error;
+testing whether the direction found at 7B transfers to a second task family; running the
+deferred 14B ablation to add a fourth point to the gate-margin pattern; and extending the
+behavioural protocol cross-lingually, which our earlier work flagged and which would
+separate capitulation from any English-specific politeness dynamics. Steering along the
+direction, rather than ablating it, is a natural complement we did not attempt: a direction
+that reduces capitulation when removed should increase it when added, and failure of that
+symmetry would be informative.

@@ -1,0 +1,49 @@
+\section{Related work}
+
+\paragraph{Sycophancy as a behaviour.}
+% Establish: it is measured, it is widespread, it has a training-data explanation.
+% Cite: sharma2023 (towards understanding sycophancy), perez2022 (model-written evals),
+% wei2023 (simple synthetic data reduces sycophancy), NEW: any 2025-2026 follow-ups.
+Prior work establishes that assistants trained with human preference feedback tend to agree
+with users at the expense of accuracy, that the tendency scales with model size and with RLHF
+training, and that preference data rewarding agreement is a plausible cause
+\citep{sharma2023sycophancy, perez2022discovering}. Mitigations have been proposed at the data level
+\citep{wei2023simple}. This literature measures the behaviour in aggregate; our contribution is
+orthogonal, holding the pressure type as an experimental variable and asking where the
+behaviour lives inside the model.
+
+\paragraph{Linear directions and activation steering.}
+% Cite: arditi2024 (refusal is mediated by a single direction), turner2023 (actadd),
+% zou2023 (representation engineering), li2023 (inference-time intervention).
+A body of work reports that high-level behaviours are mediated by low-dimensional directions
+that can be read off activations and manipulated \citep{zou2023repe, turner2023actadd, li2023iti}. The
+closest methodological precedent for this paper is the finding that refusal in
+instruction-tuned models is mediated by a single direction whose ablation removes the
+behaviour \citep{arditi2024refusal}, from which we take both the difference-in-means construction
+and the all-layer ablation. Our result is a partial negative by comparison: the analogous
+direction for capitulation does not exist usably below 7B, and where it does exist its
+ablation removes about a quarter of the behaviour rather than most of it.
+
+\paragraph{Probe validity.}
+% Cite: hewitt2019 (control tasks), belinkov2022 (probing classifiers survey).
+% This is where our gate design gets justified against prior critique.
+The gap between what a probe can decode and what a model uses has been raised repeatedly,
+with control tasks and selectivity proposed as correctives \citep{hewitt2019control, belinkov2022probing}.
+Our validation protocol is in that tradition: the within-question matched-pair construction
+is a control for question difficulty, the shuffled-label null is a control for the fitting
+procedure, and the pushback positive control establishes that the pipeline can find a
+direction when one exists. Section~\ref{sec:h6res} adds an empirical data point to this
+discussion, in that a direction significant against a well-constructed null still had no
+detectable causal role.
+
+\paragraph{Emergence with scale.}
+% Cite: wei2022 (emergent abilities), schaeffer2023 (mirage).
+% IMPORTANT: engage with schaeffer2023 directly, since we claim a threshold.
+Claims that capabilities appear abruptly at scale \citep{wei2022emergent} have been challenged on
+the grounds that apparent discontinuities can be artifacts of discontinuous metrics
+\citep{schaeffer2023mirage}. Our headline measure, AUROC, is continuous, and the discontinuity we
+report is in whether a continuous quantity crosses a threshold fixed in advance rather than
+in the quantity itself. The underlying values rise from 0.617 to 0.778 between 3B and 7B in
+Qwen, which is a large jump but not a discontinuity in the metric. We therefore describe the
+gate crossing as a threshold effect on a continuous measurement, and we note in
+Section~\ref{sec:h1} that the second family climbs gradually over the same range.

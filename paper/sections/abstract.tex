@@ -1,0 +1,23 @@
+% Related work and abstract, standalone v2 paper.
+% Citation keys are placeholders. Reuse whatever keys v1's .bib already defines
+% and add the ones marked NEW.
+
+\begin{abstract}
+Sycophancy in language models is well documented as a behaviour but poorly localised as a
+mechanism. We ask whether capitulation under user pushback, the abandonment of a correct
+answer when a user objects, corresponds to a linear direction in the residual stream, and
+whether such a direction emerges with scale. Across eight instruction-tuned models spanning
+0.5B to 14B parameters in two families, under a pre-registered protocol with
+leave-one-question-out cross-validation, within-question permutation nulls, and a positive
+control, we find no usable direction below 7B and a direction that clears our validation
+gate at 7B, 8B and 14B. Ablating that direction in Qwen2.5-7B reduces the rate at which the model reverses a correct answer by 4.8 percentage points, roughly a quarter in relative
+terms, while the identical intervention on a gate-failing direction and on a marginally
+passing one produces no effect. Probe quality, not statistical significance, predicts causal
+relevance. Behaviourally, pushback destroys three to five times more correct answers than it
+repairs at 1B and reaches parity by 7B, falsifying our own pre-registered prediction, and a
+sign-reversing crossover between pushback types survives an order of magnitude of scale and
+marginalisation over five paraphrases per type. We additionally quantify four measurement
+hazards, including a numerical-precision effect that changes roughly one episode label in
+ten.
+\end{abstract}
+

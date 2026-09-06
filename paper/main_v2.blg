@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main_v2.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 185 of file references.bib
+ : 
+ : @misc{aamir2026capitulation,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 14 entries,
+            2773 wiz_defined-function locations,
+            659 strings with 8187 characters,
+and the built_in function-call counts, 8184 in all, are:
+= -- 634
+> -- 756
+< -- 5
++ -- 254
+- -- 240
+* -- 709
+:= -- 1318
+add.period$ -- 46
+call.type$ -- 14
+change.case$ -- 120
+chr.to.int$ -- 14
+cite$ -- 28
+duplicate$ -- 304
+empty$ -- 521
+format.name$ -- 258
+if$ -- 1657
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 12
+newline$ -- 82
+num.names$ -- 56
+pop$ -- 267
+preamble$ -- 1
+purify$ -- 106
+quote$ -- 0
+skip$ -- 269
+stack$ -- 0
+substring$ -- 93
+swap$ -- 31
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 154
+warning$ -- 0
+while$ -- 47
+width$ -- 0
+write$ -- 185
+(There was 1 error message)
