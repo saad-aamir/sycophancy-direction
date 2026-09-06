@@ -68,8 +68,6 @@ Whatever produces capitulation is therefore shaped substantially by training dat
 post-training procedure and not only by capability. This limits how far any single-family
 mechanistic result should be extrapolated, including ours. The Llama comparison is further complicated by the derivation noted in Section~\ref{sec:limitations}: those three models share a parent, so their differences understate what independent training runs at those scales might show.
 
-The Llama comparison is further complicated by the derivation noted in Section~\ref{sec:limitations}: those three models share a parent, so their differences understate what independent training runs at those scales might show.
-
 \subsection{What the causal result does and does not license}
 
 Ablating a single direction at one layer of one model reduced capitulation by roughly a
@@ -128,7 +126,7 @@ English. Full precision caps the accessible model sizes on a single accelerator 
 \textbf{One causal replication attempt.} The causal result rests on one model. The negative
 control and the Llama-8B null constrain its interpretation, but a second family showing the
 effect would constrain it considerably more. The Qwen-14B ablation, which the
-pre-registration makes conditional on its gate pass, was deferred for compute reasons.
+pre-registration makes conditional on its gate pass, was deferred under the pre-registered spending stop-rule.
 
 \textbf{Hooked generation on Llama.} The Llama-8B causal test ran under a generation path
 that degenerates on 13\% of episodes, symmetric across arms. The contrast is internally

@@ -178,7 +178,7 @@ the bar, passes and does nothing. Qwen-7B at 0.778 passes comfortably and moves 
 On this evidence the validation threshold is not a statistical formality: how far a direction
 clears it predicts whether removing it changes anything. Qwen-14B, which passes at 0.720,
 would be the natural fourth point and is predicted by this pattern to show no effect; that
-run was deferred for compute reasons.
+run was deferred under the pre-registered spending stop-rule.
 
 \subsection{The cross-family crossover is robust to paraphrase}
 \label{sec:h3res}
@@ -227,7 +227,8 @@ the four models named in the pre-registration.}
 Among the four confirmatory models, three are significant in the predicted direction and one
 is null. Both Qwen models show simple pushback destabilising more; Llama-8B shows the
 reverse. The crossover our earlier work reported at roughly 1B therefore survives an order of
-magnitude of scale and marginalisation over five paraphrases per type.
+magnitude of scale in Qwen and holds at 8B in Llama, with marginalisation over five
+paraphrases per type.
 
 Llama-1B is the null, and it is the model where our earlier work reported the largest effect,
 an odds ratio of 4.0 in the opposite direction to Qwen. That result does not survive

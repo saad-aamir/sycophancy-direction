@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.6)  6 SEP 2026 16:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.6)  6 SEP 2026 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -452,11 +452,11 @@ Package pdftex.def Info: figures/fig4_crossover_or.pdf  used on input line 218.
 File: figures/fig2_recovery_ratio.pdf Graphic file (type pdf)
 <use figures/fig2_recovery_ratio.pdf>
 Package pdftex.def Info: figures/fig2_recovery_ratio.pdf  used on input line 28
-3.
+4.
 (pdftex.def)             Requested size: 338.22418pt x 221.15915pt.
 ) (./sections/hazards.tex [12 <./figures/fig4_crossover_or.pdf>] [13]
 [14 <./figures/fig2_recovery_ratio.pdf>]) (./sections/discussion.tex [15]
-[16] [17]) (./main_v2.bbl [18]
+[16] [17]) (./main_v2.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 57--63
 []\OT1/cmr/m/n/10.95 Meta AI.  Llama 3.2: Rev-o-lu-tion-iz-ing edge AI and vi-s
 ion with
@@ -468,7 +468,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--63
 .95 https : / / ai . meta . com / blog /
  []
 
-) [19] (./main_v2.aux)
+[18]) [19] (./main_v2.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -483,7 +483,7 @@ Here is how much of TeX's memory you used:
  39754 multiletter control sequences out of 15000+600000
  640976 words of font info for 91 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,12n,79p,576b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,576b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/saadaamir/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknapp
 en/ec/tcrm0800.600pk> </Users/saadaamir/Library/texlive/2026basic/texmf-var/fon
 ts/pk/ljfour/jknappen/ec/tcrm0700.600pk></usr/local/texlive/2026basic/texmf-dis
@@ -500,10 +500,10 @@ al/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
 /local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
 fb>
-Output written on main_v2.pdf (19 pages, 297438 bytes).
+Output written on main_v2.pdf (19 pages, 297318 bytes).
 PDF statistics:
- 611 PDF objects out of 1000 (max. 8388607)
- 383 compressed objects within 4 object streams
+ 610 PDF objects out of 1000 (max. 8388607)
+ 382 compressed objects within 4 object streams
  93 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 
