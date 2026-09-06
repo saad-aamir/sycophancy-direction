@@ -54,11 +54,8 @@ compensating for it. Every model whose residual stream is cleanly null has zero 
 above the corrected null. This rules out "right signal, wrong read-out" as an explanation
 for the gap between probing and steering results.
 
-\textbf{Two behavioural findings, one of which falsifies our own prediction.} The
-sign-reversing crossover between pushback types survives marginalisation over paraphrases
-in three of four pre-registered models, and fails in the fourth, Llama-1B, where the v1
-effect turns out to have been wording-dependent. Separately, we pre-registered that
-pushback destroys more truth than it repairs at every scale. It does not. The
+\textbf{Two behavioural findings, one of which falsifies our own prediction.} The sign-reversing crossover between pushback types survives marginalisation over paraphrases in three of four pre-registered models, and fails in the fourth, Llama-1B, where the v1 effect turns out to have been wording-dependent. The Qwen side rests on five separately pretrained models; the Llama side rests on 8B, since the smaller Llamas derive from it. Separately, we pre-registered that
+pushback destroys more truth than it repairs at every scale.The Qwen side rests on five separately pretrained models; the Llama side rests on 8B, since the smaller Llamas derive from it. It does not. The
 flip-to-recovery ratio declines monotonically in both families, from 5.0 at Qwen-0.5B to
 0.7 at Qwen-14B and from 3.6 at Llama-1B to 1.0 at Llama-8B, reaching parity by 7B to 8B.
 Notably, this behavioural change is smooth over the same range where decodability jumps,

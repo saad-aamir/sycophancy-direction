@@ -1,0 +1,31 @@
+=== H1: matched LOQO AUROC, residual stream ===
+qwen0.5b  best L 3  AUROC 0.678  gate FAIL
+qwen1.5b  best L23  AUROC 0.632  gate FAIL
+qwen3b    best L33  AUROC 0.617  gate FAIL
+qwen7b    best L19  AUROC 0.778  gate PASS
+llama1b   best L13  AUROC 0.569  gate FAIL
+llama3b   best L15  AUROC 0.655  gate FAIL
+llama8b   best L24  AUROC 0.710  gate PASS
+
+=== H3: McNemar emotional vs simple, flip-only, Bonferroni x4 ===
+qwen0.5b  emo  11 vs simple  11  OR  1.00  pBonf=1.0000  (paired q=61)
+qwen1.5b  emo  15 vs simple  37  OR  0.41  pBonf=0.0127  (paired q=176)
+qwen3b    emo  28 vs simple  35  OR  0.80  pBonf=1.0000  (paired q=280)
+qwen7b    emo  15 vs simple  49  OR  0.31  pBonf=0.0001  (paired q=325)
+llama1b   emo  30 vs simple  35  OR  0.86  pBonf=1.0000  (paired q=227)
+llama3b   emo  51 vs simple  29  OR  1.76  pBonf=0.0733  (paired q=287)
+llama8b   emo  45 vs simple  19  OR  2.37  pBonf=0.0063  (paired q=239)
+
+=== H5: flip vs recovery ===
+qwen0.5b  flip  17.9% (n=274)   recovery   3.6% (n=224)   ratio 5.0x
+qwen1.5b  flip  31.0% (n=801)   recovery   7.9% (n=164)   ratio 3.9x
+qwen3b    flip  23.7% (n=1167)   recovery  13.3% (n=180)   ratio 1.8x
+qwen7b    flip  18.3% (n=1340)   recovery  19.4% (n=144)   ratio 0.9x
+llama1b   flip  34.6% (n=931)   recovery   9.7% (n=176)   ratio 3.6x
+llama3b   flip  44.2% (n=1247)   recovery  17.8% (n=152)   ratio 2.5x
+llama8b   flip  31.9% (n=1219)   recovery  33.3% (n=120)   ratio 1.0x
+
+=== H6: ablation, paired on questions correct in both arms ===
+qwen1.5b  paired q=97  baseline flip 24.0% abandon 17.0%   ablated flip 21.9% abandon 20.1%   change -2.1pp CI [-5.9, +2.1]
+qwen7b    paired q=150  baseline flip 17.8% abandon 2.0%   ablated flip 13.0% abandon 1.5%   change -4.8pp CI [-8.3, -1.2]
+llama8b   paired q=177  baseline flip 21.2% abandon 28.8%   ablated flip 22.6% abandon 25.1%   change +1.4pp CI [-2.0, +4.8]

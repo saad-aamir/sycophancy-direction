@@ -237,6 +237,9 @@ def process(pair_type: str, cfg):
 
 
 def main():
+    import os, sys
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        sys.exit("ANTHROPIC_API_KEY not set; refusing to write ERROR sidecars")
     cfg = load_config()
     for pair_type in ("capitulation", "pushback"):
         process(pair_type, cfg)

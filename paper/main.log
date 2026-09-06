@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.6)  6 SEP 2026 16:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.6)  6 SEP 2026 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main_v2
-(./main_v2.tex
+**main
+(./main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/article.cls
@@ -325,27 +325,27 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 ef
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
-) (./main_v2.aux)
-\openout1 = `main_v2.aux'.
+) (./main.aux)
+\openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -405,105 +405,133 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 27.
- (./main_v2.out) (./main_v2.out)
+Package hyperref Info: Link coloring OFF on input line 23.
+ (./main.out) (./main.out)
 \@outlinefile=\write3
-\openout3 = `main_v2.out'.
+\openout3 = `main.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (2.45146pt too wide) in paragraph at lines 100--104
+[]\OT1/cmr/bx/n/10.95 The sus-cep-ti-bil-ity crossover. \OT1/cmr/m/n/10.95 The 
+same paired com-par-i-son of push-back styles is Bonferroni-
+ []
+
+
+Overfull \hbox (4.74974pt too wide) in paragraph at lines 108--111
+[]\OT1/cmr/bx/n/10.95 A mea-sure-ment cor-rec-tion. \OT1/cmr/m/n/10.95 Sub-stri
+ng grad-ing un-der-es-ti-mates ca-pit-u-la-tion by 18pp (Qwen)
+ []
+
+[2] [3] [4] [5]
+<figures/qwen_capitulation.png, id=183, 542.025pt x 245.718pt>
+File: figures/qwen_capitulation.png Graphic file (type png)
+<use figures/qwen_capitulation.png>
+Package pdftex.def Info: figures/qwen_capitulation.png  used on input line 410.
+
+(pdftex.def)             Requested size: 399.29463pt x 181.0186pt.
+ [6]
+<figures/llama_capitulation.png, id=192, 542.025pt x 245.718pt>
+File: figures/llama_capitulation.png Graphic file (type png)
+<use figures/llama_capitulation.png>
+Package pdftex.def Info: figures/llama_capitulation.png  used on input line 418
+.
+(pdftex.def)             Requested size: 399.29463pt x 181.0186pt.
+<figures/qwen_pushback.png, id=193, 542.025pt x 245.718pt>
+File: figures/qwen_pushback.png Graphic file (type png)
+<use figures/qwen_pushback.png>
+Package pdftex.def Info: figures/qwen_pushback.png  used on input line 425.
+(pdftex.def)             Requested size: 225.4804pt x 102.21852pt.
+<figures/llama_pushback.png, id=194, 542.025pt x 245.718pt>
+File: figures/llama_pushback.png Graphic file (type png)
+<use figures/llama_pushback.png>
+Package pdftex.def Info: figures/llama_pushback.png  used on input line 426.
+(pdftex.def)             Requested size: 225.4804pt x 102.21852pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7 <./figures/qwen_capitulation.png> <./figures/llama_capitulation.png>]
+[8 <./figures/qwen_pushback.png> <./figures/llama_pushback.png>]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
+96.
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
 )
-(./sections/abstract.tex) (./sections/introduction.tex [1
-
-{/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (
-./sections/related.tex [2]) (./sections/methods.tex [3] [4] [5] [6] [7]) (./sec
-tions/results.tex
-<figures/fig1_emergence.pdf, id=232, 375.804pt x 245.718pt>
-File: figures/fig1_emergence.pdf Graphic file (type pdf)
-<use figures/fig1_emergence.pdf>
-Package pdftex.def Info: figures/fig1_emergence.pdf  used on input line 45.
-(pdftex.def)             Requested size: 338.22418pt x 221.15915pt.
-
-[8]
-<figures/fig3_ablation_forest.pdf, id=250, 390.25798pt x 209.58301pt>
-File: figures/fig3_ablation_forest.pdf Graphic file (type pdf)
-<use figures/fig3_ablation_forest.pdf>
-Package pdftex.def Info: figures/fig3_ablation_forest.pdf  used on input line 1
-51.
-(pdftex.def)             Requested size: 347.62129pt x 186.68817pt.
- [9 <./figures/fig1_emergence.pdf>]
-<figures/fig4_crossover_or.pdf, id=309, 404.712pt x 260.17201pt>
-File: figures/fig4_crossover_or.pdf Graphic file (type pdf)
-<use figures/fig4_crossover_or.pdf>
-Package pdftex.def Info: figures/fig4_crossover_or.pdf  used on input line 218.
-
-(pdftex.def)             Requested size: 357.01123pt x 229.51974pt.
- [10] [11 <./figures/fig3_ablation_forest.pdf>]
-<figures/fig2_recovery_ratio.pdf, id=377, 375.804pt x 245.718pt>
-File: figures/fig2_recovery_ratio.pdf Graphic file (type pdf)
-<use figures/fig2_recovery_ratio.pdf>
-Package pdftex.def Info: figures/fig2_recovery_ratio.pdf  used on input line 28
-3.
-(pdftex.def)             Requested size: 338.22418pt x 221.15915pt.
-) (./sections/hazards.tex [12 <./figures/fig4_crossover_or.pdf>] [13]
-[14 <./figures/fig2_recovery_ratio.pdf>]) (./sections/discussion.tex [15]
-[16] [17]) (./main_v2.bbl [18]
-Underfull \hbox (badness 10000) in paragraph at lines 57--63
-[]\OT1/cmr/m/n/10.95 Meta AI.  Llama 3.2: Rev-o-lu-tion-iz-ing edge AI and vi-s
-ion with
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 496.
+ [9]
+Overfull \hbox (8.67793pt too wide) in paragraph at lines 575--583
+ []\OT1/cmr/bx/n/10.95 Determinism.[] \OT1/cmr/m/n/10.95 Greedy de-cod-ing (tem
+-per-a-ture 0) through-out, which also guar-an-tees that screening-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--63
-\OT1/cmr/m/n/10.95 open, cus-tomiz-able mod-els, 2024.  URL []$\OT1/cmtt/m/n/10
-.95 https : / / ai . meta . com / blog /
+Overfull \hbox (9.1018pt too wide) in paragraph at lines 584--591
+\OT1/cmtt/m/n/10.95 Llama-3.2-1B-Instruct \OT1/cmr/m/n/10.95 (16 lay-ers, $\OML
+/cmm/m/it/10.95 d[][]\OT1/cmr/m/n/10.95 2048$), both via Trans-former-Lens with
+ model-appropriate
  []
 
-) [19] (./main_v2.aux)
+(./main.bbl [10]
+Underfull \hbox (badness 10000) in paragraph at lines 77--80
+[]\OT1/cmr/m/n/10.95 Neel Nanda and Joseph Bloom.  Trans-former-Lens.  []$\OT1/
+cmtt/m/n/10.95 https : / / github . com /
+ []
+
+[11]) [12] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-Package rerunfilecheck Info: File `main_v2.out' has not changed.
-(rerunfilecheck)             Checksum: 49D955CE733D87AFDAD3329019E57888;7784.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 7754F51030676831A58CE6631310B246;2927.
  ) 
 Here is how much of TeX's memory you used:
- 11308 strings out of 469006
- 171310 string characters out of 5454814
- 606337 words of memory out of 5000000
- 39754 multiletter control sequences out of 15000+600000
- 640976 words of font info for 91 fonts, out of 8000000 for 9000
+ 11246 strings out of 469006
+ 170032 string characters out of 5454814
+ 600592 words of memory out of 5000000
+ 39726 multiletter control sequences out of 15000+600000
+ 640662 words of font info for 90 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,12n,79p,576b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,449b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/saadaamir/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknapp
-en/ec/tcrm0800.600pk> </Users/saadaamir/Library/texlive/2026basic/texmf-var/fon
-ts/pk/ljfour/jknappen/ec/tcrm0700.600pk></usr/local/texlive/2026basic/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026ba
-sic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/20
-26basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
-ive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
-exlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
-/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
-/usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
-fb>
-Output written on main_v2.pdf (19 pages, 297438 bytes).
+en/ec/tcrm1095.600pk></usr/local/texlive/2026basic/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2026basic/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026basic/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026basic
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026bas
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026b
+asic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
+ve/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (12 pages, 433377 bytes).
 PDF statistics:
- 611 PDF objects out of 1000 (max. 8388607)
- 383 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
- 285 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 327 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

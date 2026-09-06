@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99e (TeX Live 2026)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: main_v2.aux
+The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 Database file #1: references.bib
 I was expecting a `,' or a `}'---line 185 of file references.bib
@@ -8,45 +8,45 @@ I was expecting a `,' or a `}'---line 185 of file references.bib
  : @misc{aamir2026capitulation,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 14 entries,
+You've used 20 entries,
             2773 wiz_defined-function locations,
-            660 strings with 8261 characters,
-and the built_in function-call counts, 8198 in all, are:
-= -- 637
-> -- 756
-< -- 5
-+ -- 254
-- -- 240
-* -- 711
-:= -- 1321
-add.period$ -- 47
-call.type$ -- 14
-change.case$ -- 120
-chr.to.int$ -- 14
-cite$ -- 28
-duplicate$ -- 304
-empty$ -- 521
-format.name$ -- 258
-if$ -- 1660
+            685 strings with 9316 characters,
+and the built_in function-call counts, 10618 in all, are:
+= -- 818
+> -- 961
+< -- 4
++ -- 323
+- -- 303
+* -- 915
+:= -- 1731
+add.period$ -- 65
+call.type$ -- 20
+change.case$ -- 159
+chr.to.int$ -- 20
+cite$ -- 40
+duplicate$ -- 417
+empty$ -- 701
+format.name$ -- 325
+if$ -- 2139
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 12
-newline$ -- 83
-num.names$ -- 56
-pop$ -- 266
+missing$ -- 18
+newline$ -- 113
+num.names$ -- 80
+pop$ -- 348
 preamble$ -- 1
-purify$ -- 106
+purify$ -- 139
 quote$ -- 0
-skip$ -- 269
+skip$ -- 344
 stack$ -- 0
-substring$ -- 93
-swap$ -- 31
-text.length$ -- 1
+substring$ -- 65
+swap$ -- 27
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 154
+type$ -- 220
 warning$ -- 0
-while$ -- 47
+while$ -- 62
 width$ -- 0
-write$ -- 187
+write$ -- 258
 (There was 1 error message)

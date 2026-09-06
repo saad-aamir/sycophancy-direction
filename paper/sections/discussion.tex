@@ -66,7 +66,9 @@ across Qwen, meaning the four pressure types are represented more distinctly in 
 
 Whatever produces capitulation is therefore shaped substantially by training data or
 post-training procedure and not only by capability. This limits how far any single-family
-mechanistic result should be extrapolated, including ours.
+mechanistic result should be extrapolated, including ours. The Llama comparison is further complicated by the derivation noted in Section~\ref{sec:limitations}: those three models share a parent, so their differences understate what independent training runs at those scales might show.
+
+The Llama comparison is further complicated by the derivation noted in Section~\ref{sec:limitations}: those three models share a parent, so their differences understate what independent training runs at those scales might show.
 
 \subsection{What the causal result does and does not license}
 
@@ -79,6 +81,7 @@ does nothing at all. The defensible claim is that a linear direction is causally
 in capitulation in Qwen-7B, not that we have located the mechanism.
 
 \section{Limitations}
+\label{sec:limitations}
 
 \textbf{One task family.} Every episode is a closed-book factual question with a short
 answer. Capitulation on reasoning chains, on code, on subjective judgements, or on

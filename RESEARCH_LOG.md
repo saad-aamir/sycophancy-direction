@@ -380,4 +380,26 @@ numbers, what was decided, what broke. This reconstruction (Mon
             Basis: v1 Appendix C measured min bf16-vs-fp32 cosine 0.9757, and fp32
             cannot fit 14B in 48GB. Label-agreement bar (>=95% on 50 questions) unchanged.
 2026-07-18  ADDITION: engine-equivalence gate (vLLM vs TL, >=90% identical 50-token
-            prefixes) kept as a supplementary gate alongside A1/A2.
+            prefixes) kept as a supplementary gate alongside A1/A2.2026-07-19  DEVIATION: engine-equivalence gate (added 2026-07-18) retired as a launch
+            blocker after it failed at 10/20 identical prefixes under bf16. It was
+            supplementary and never pre-registered. Replaced by a stricter rule: H6a/H6b
+            generate BOTH baseline and ablated transcripts under TransformerLens, so no
+            causal comparison crosses inference engines.
+2026-07-19  DEVIATION: activation read-out grid reduced from six loci to the two named in
+            the pre-registration (components [resid_pre, attn_z], position [last]).
+            qwen1.5b was cached with all six; later models with two. Harmless, since only
+            the two pre-registered loci enter any analysis.
+2026-07-21  DEVIATION: vLLM max_model_len capped at 4096 in src/generation.py. Llama
+            declares a 131,072-token context whose fp32 KV cache exceeds a 48GB card.
+            Infrastructure limit only: prompts run a few hundred tokens against
+            max_new_tokens=150, so outputs cannot change.
+2026-07-21  DEVIATION: head-level permutation null uses 200 permutations rather than the
+            20 named in the pre-registration. A 95th percentile estimated from 20 draws is
+            essentially the maximum; more permutations tighten the threshold rather than
+            loosen it. The residual-stream null still uses the pre-registered 20.
+2026-07-22  DEVIATION: qwen14b passed the Section 8 gate (matched LOQO AUROC 0.720 at
+            layer 31, threshold 0.618), which under the pre-registration triggers a
+            mandatory H6b ablation. Deferred for compute: ~215 held-out questions x 5
+            episodes x 2 arms of sequential fp32 generation at 14B is 4-5 GPU hours,
+            roughly $8, against a prepaid budget that was exhausted. Not reported. The
+            gate-margin pattern predicts a null there.

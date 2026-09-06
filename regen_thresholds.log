@@ -1,0 +1,126 @@
+[sweep] active model -> qwen0.5b (Qwen/Qwen2.5-0.5B-Instruct)
+[dirs] capitulation: n=20 pos / 130 neg, 68 questions, 17 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 3: AUROC 0.678  (pooled LOQO 0.674, in-sample 0.759)
+[dirs]   within-q shuffle @ L3: 0.520 ± 0.083  (threshold 0.686)
+[dirs]   GATE: FAIL (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen0.5b/directions/capitulation_directions.pt
+[dirs] pushback: n=384 pos / 384 neg, 96 questions, 96 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 2: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L2: 0.495 ± 0.017  (threshold 0.528)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L2 (matched q per type: {'authoritative': 96, 'emotional': 96, 'simple': 96, 'social': 96})
+      authoritative   x emotional        +0.900
+      authoritative   x simple           +0.831
+      authoritative   x social           +0.933
+      emotional       x simple           +0.903
+      emotional       x social           +0.925
+      simple          x social           +0.933
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen0.5b/directions/pushback_directions.pt
+[sweep] active model -> qwen1.5b (Qwen/Qwen2.5-1.5B-Instruct)
+[dirs] capitulation: n=150 pos / 310 neg, 142 questions, 61 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 23: AUROC 0.632  (pooled LOQO 0.631, in-sample 0.676)
+[dirs]   within-q shuffle @ L23: 0.492 ± 0.044  (threshold 0.580)
+[dirs]   GATE: FAIL (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen1.5b/directions/capitulation_directions.pt
+[dirs] pushback: n=652 pos / 652 neg, 163 questions, 163 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 2: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L2: 0.483 ± 0.026  (threshold 0.535)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L2 (matched q per type: {'authoritative': 163, 'emotional': 163, 'simple': 163, 'social': 163})
+      authoritative   x emotional        +0.843
+      authoritative   x simple           +0.808
+      authoritative   x social           +0.910
+      emotional       x simple           +0.863
+      emotional       x social           +0.897
+      simple          x social           +0.924
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen1.5b/directions/pushback_directions.pt
+[sweep] active model -> qwen3b (Qwen/Qwen2.5-3B-Instruct)
+[dirs] capitulation: n=146 pos / 491 neg, 163 questions, 66 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 33: AUROC 0.617  (pooled LOQO 0.655, in-sample 0.687)
+[dirs]   within-q shuffle @ L33: 0.478 ± 0.047  (threshold 0.572)
+[dirs]   GATE: FAIL (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen3b/directions/capitulation_directions.pt
+[dirs] pushback: n=752 pos / 752 neg, 188 questions, 188 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 2: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L2: 0.498 ± 0.013  (threshold 0.523)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L2 (matched q per type: {'authoritative': 188, 'emotional': 188, 'simple': 188, 'social': 188})
+      authoritative   x emotional        +0.835
+      authoritative   x simple           +0.665
+      authoritative   x social           +0.841
+      emotional       x simple           +0.711
+      emotional       x social           +0.833
+      simple          x social           +0.870
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen3b/directions/pushback_directions.pt
+[sweep] active model -> qwen7b (Qwen/Qwen2.5-7B-Instruct)
+[dirs] capitulation: n=126 pos / 604 neg, 189 questions, 75 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 19: AUROC 0.778  (pooled LOQO 0.806, in-sample 0.825)
+[dirs]   within-q shuffle @ L19: 0.480 ± 0.047  (threshold 0.574)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen7b/directions/capitulation_directions.pt
+[dirs] pushback: n=828 pos / 828 neg, 207 questions, 207 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 5: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L5: 0.465 ± 0.041  (threshold 0.546)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L5 (matched q per type: {'authoritative': 207, 'emotional': 207, 'simple': 207, 'social': 207})
+      authoritative   x emotional        +0.872
+      authoritative   x simple           +0.908
+      authoritative   x social           +0.923
+      emotional       x simple           +0.939
+      emotional       x social           +0.930
+      simple          x social           +0.958
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/qwen7b/directions/pushback_directions.pt
+[sweep] active model -> llama1b (meta-llama/Llama-3.2-1B-Instruct)
+[dirs] capitulation: n=200 pos / 330 neg, 155 questions, 84 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 13: AUROC 0.569  (pooled LOQO 0.567, in-sample 0.646)
+[dirs]   within-q shuffle @ L13: 0.497 ± 0.031  (threshold 0.559)
+[dirs]   GATE: FAIL (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/llama1b/directions/capitulation_directions.pt
+[dirs] pushback: n=716 pos / 716 neg, 179 questions, 179 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 1: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L1: 0.484 ± 0.037  (threshold 0.559)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L1 (matched q per type: {'authoritative': 179, 'emotional': 179, 'simple': 179, 'social': 179})
+      authoritative   x emotional        +0.919
+      authoritative   x simple           +0.511
+      authoritative   x social           +0.757
+      emotional       x simple           +0.511
+      emotional       x social           +0.737
+      simple          x social           +0.922
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/llama1b/directions/pushback_directions.pt
+[sweep] active model -> llama3b (meta-llama/Llama-3.2-3B-Instruct)
+[dirs] capitulation: n=276 pos / 403 neg, 205 questions, 84 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 15: AUROC 0.655  (pooled LOQO 0.684, in-sample 0.716)
+[dirs]   within-q shuffle @ L15: 0.485 ± 0.059  (threshold 0.603)
+[dirs]   GATE: FAIL (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/llama3b/directions/capitulation_directions.pt
+[dirs] pushback: n=936 pos / 936 neg, 234 questions, 234 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 1: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L1: 0.488 ± 0.024  (threshold 0.536)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L1 (matched q per type: {'authoritative': 234, 'emotional': 234, 'simple': 234, 'social': 234})
+      authoritative   x emotional        +0.858
+      authoritative   x simple           +0.457
+      authoritative   x social           +0.724
+      emotional       x simple           +0.381
+      emotional       x social           +0.628
+      simple          x social           +0.905
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/llama3b/directions/pushback_directions.pt
+[sweep] active model -> llama8b (meta-llama/Llama-3.1-8B-Instruct)
+[dirs] capitulation: n=195 pos / 442 neg, 203 questions, 84 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 24: AUROC 0.710  (pooled LOQO 0.729, in-sample 0.755)
+[dirs]   within-q shuffle @ L24: 0.476 ± 0.063  (threshold 0.602)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/llama8b/directions/capitulation_directions.pt
+[dirs] pushback: n=900 pos / 900 neg, 225 questions, 225 matched (mixed-outcome)
+[dirs]   MATCHED LOQO best layer 1: AUROC 1.000  (pooled LOQO 1.000, in-sample 1.000)
+[dirs]   within-q shuffle @ L1: 0.493 ± 0.018  (threshold 0.530)
+[dirs]   GATE: PASS (need matched LOQO >= 0.7 and > shuffle mean + 2sd)
+[dirs]   per-type cosines @ L1 (matched q per type: {'authoritative': 225, 'emotional': 225, 'simple': 225, 'social': 225})
+      authoritative   x emotional        +0.830
+      authoritative   x simple           +0.375
+      authoritative   x social           +0.641
+      emotional       x simple           +0.254
+      emotional       x social           +0.496
+      simple          x social           +0.907
+[dirs]   saved /Users/saadaamir/Downloads/sycophancy-direction/outputs/llama8b/directions/pushback_directions.pt
